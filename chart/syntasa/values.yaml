@@ -1,0 +1,182 @@
+# Default values for syntasa.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+## User Provided Properties
+#name: {{ .Release.Name }}
+#namespace: {{ .Release.Namespace }}
+metastore_connection_name: ""
+metastore_connection_user: ""
+metastore_connection_password: ""
+cluster_name: ""
+static_ip_name: ""
+static_ip_address: ""
+internal_static_ip_address: ""
+infrastructure_service_account: ""
+partner_id: ""
+whitelist_ips: ""
+
+syn_kube_service_account: "default"
+syn_kube_service_account_rb: "syntasa-role-binding"
+
+syn_kube_storage_class: "pd-ssd"
+syn_kube_storage_class_size: "20G"
+
+syn_secret_key: "ZmI2YjI5NDRkMzgwZDFlNA=="
+syn_license: "test-license"
+
+global:
+  application:
+    name: "Syntasa"
+  image:
+    repository: gcr.io/syntasa-devops-sandbox/syntasa
+    tag: 5.0.2
+    pullPolicy: IfNotPresent
+  replicaCount: 1
+  imagePullSecret:
+    name: "syntasa-docker-credentials"
+  configMap:
+    name: "syntasa-config"
+
+volume_claims:
+  persistent_disk:
+    name: "syntasa-kube-pd"
+  backend_volume:
+    name: "syntasa-backend-volume"
+    claim_name: "syntasa-backend-pv-claim"
+    size: 20G
+  frontend_volume:
+    name: "syntasa-frontend-volume"
+    claim_name: "syntasa-frontend-pv-claim"
+    size: 20G
+  platform_volume:
+    name: "syntasa-platform-volume"
+    claim_name: "syntasa-platform-pv-claim"
+    size: 20G
+
+container_metadata:
+  kafka:
+    name: "syntasa-kafka"
+    image_name: ""
+    service_name: "kafka-service"
+    external_service_name: "kafka-external-service"
+
+  zookeeper:
+    name: "zookeeper"
+    image_name: ""
+
+  ingress:
+    name: "syntasa-ingress"
+    config_map_name: "haproxy-configmap"
+    backend_name: "syntasa-app"
+    image_name: ""
+
+  default_backend:
+    name: "ingress-default-backend"
+    image_name: ""
+
+  sql_proxy:
+    name: "syntasa-database"
+    service_name: "syntasa-database-service"
+    image_name: ""
+
+  syntasa_infrastructure_service:
+    name: "syntasa-infrastructure-service"
+    image_name: ""
+    container_port: "4440"
+    service_name: "syntasa-infrastructure-service"
+
+  syntasa_api_service:
+    name: "syntasa-api-service"
+    image_name: ""
+    service_name: "syntasa-api-service-backend"
+    container_port: "9090"
+
+  syntasa_auth_service:
+    name: "syntasa-auth-service"
+    image_name: ""
+    service_name: "syntasa-auth-service"
+    container_port: "9443"
+
+  syntasa_composer_service:
+    name: "syntasa-composer-service"
+    image_name: ""
+
+  syntasa_mlflow_service:
+    name: "syntasa-mlflow-service"
+    image_name: ""
+    service_name: "syntasa-mlflow-service"
+    container_port: "5000"
+
+  syntasa_data_gateway_service:
+    name: "syntasa-data-gateway"
+    image_name: ""
+    service_name: "syntasa-data-gateway-service"
+    container_port: "8050"
+
+  syntasa_event_engine_service:
+    name: "syntasa-event-engine-service"
+    image_name: ""
+    service_name: "syntasa-event-engine-service"
+    container_port: "8040"
+
+  syntasa_execution_service:
+    name: "syntasa-execution-service"
+    image_name: ""
+    service_name: "syntasa-execution-service"
+    container_port: "8090"
+
+  syntasa_job_management_service:
+    name: "syntasa-job-management-service"
+    image_name: ""
+    service_name: "syntasa-job-management-service"
+    container_port: "8090"
+
+  syntasa_notification_service:
+    name: "syntasa-notification-service"
+    image_name: ""
+    service_name: "syntasa-notification-service"
+    container_port: "8300"
+
+  syntasa_runtime_service:
+    name: "syntasa-runtime-service"
+    image_name: ""
+    service_name: "syntasa-runtime-service"
+    container_port: "8080"
+
+  syntasa_alert_service:
+    name: "syntasa-alert-service"
+    image_name: ""
+    service_name: "syntasa-alert-service"
+
+  syntasa_state_service:
+    name: "syntasa-state-service"
+    image_name: ""
+    service_name: "syntasa-state-service"
+    container_port: "8200"
+
+  syntasa_app_preview:
+    name: "syntasa-app-preview"
+    image_name: ""
+    service_name: "syntasa-app-preview"
+
+  syntasa_app_platform:
+    name: "syntasa-app-platform"
+    image_name: ""
+    service_name: "syntasa-app-platform"
+
+  syntasa_app_business:
+    name: "syntasa-app-business"
+    image_name: ""
+    service_name: "syntasa-app-business"
+
+  syntasa_app_appdatagateway:
+    name: "syntasa-app-appdatagateway"
+    image_name: ""
+    service_name: "syntasa-app-appdatagateway"
+
+  syntasa_app_apigateway:
+    name: "syntasa-app-apigateway"
+    image_name: ""
+    service_name: "syntasa-app-apigateway"
+    container_port: "8888"

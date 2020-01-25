@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: {{ .Values.container_metadata.ingress.name }}
+  name: {{ .Values.container_metadata.ingress.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: {{ .Values.container_metadata.ingress.name }}
+  template:
+    metadata:
+      labels:
+        run: {{ .Values.container_metadata.ingress.name }}
+    spec:
+      serviceAccountName: {{ .Values.syn_kube_service_account }}
+      containers:
+        - name: {{ .Values.container_metadata.ingress.name }}
+          image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.ingress.image_name }}:{{ .Values.global.image.tag }}"
+          imagePullPolicy: Always
+          args:
+            - --default-backend-service=$(POD_NAMESPACE)/ingress-default-backend
+            - --default-ssl-certificate=$(POD_NAMESPACE)/syntasa-cert
+            - --configmap=$(POD_NAMESPACE)/haproxy-configmap
+            - --reload-strategy=native
+          ports:
+            - name: http
+              containerPort: 80
+            - name: https
+              containerPort: 443
+            - name: stat
+              containerPort: 1936
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: POD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace

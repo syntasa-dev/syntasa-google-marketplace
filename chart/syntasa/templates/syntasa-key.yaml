@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: syntasa-key
+type: Opaque
+data:
+  syntasa.key: {{ .Values.syn_secret_key }}

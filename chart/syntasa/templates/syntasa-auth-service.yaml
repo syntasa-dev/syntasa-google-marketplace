@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.container_metadata.syntasa_auth_service.service_name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+    - port: 9443
+  selector:
+    app: {{ .Values.container_metadata.syntasa_auth_service.name }}

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: {{ .Values.container_metadata.default_backend.name }}
+  name: {{ .Values.container_metadata.default_backend.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+    - name: port-1
+      port: 8080
+      protocol: TCP
+  selector:
+    run: {{ .Values.container_metadata.default_backend.name }}

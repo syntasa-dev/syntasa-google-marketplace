@@ -1,0 +1,141 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.container_metadata.syntasa_infrastructure_service.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.container_metadata.syntasa_infrastructure_service.name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.container_metadata.syntasa_infrastructure_service.name }}
+    spec:
+      serviceAccountName: {{ .Values.syn_kube_service_account }}
+      containers:
+      - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.syntasa_infrastructure_service.image_name }}:{{ .Values.global.image.tag }}"
+        name: {{ .Values.container_metadata.syntasa_infrastructure_service.name }}
+        imagePullPolicy: {{ .Values.global.image.pullPolicy }}
+        ports:
+        - containerPort: {{ .Values.container_metadata.syntasa_infrastructure_service.container_port | int }}
+        env:
+          - name: SKIP_DATABASE_SETUP
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_skip_database_setup
+          - name: NO_LOCAL_MYSQL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_no_local_mysql
+          - name: RUNDECK_STORAGE_PROVIDER
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_rundeck_storage_provider
+          - name: INFRASTRUCTURE_SERVICE_GROUP_ID
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_service_group_id
+          - name: INFRASTRUCTURE_SERVICE_KAFKA_MAX_INTERVAL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_kafka_max_interval
+          - name: INFRASTRUCTURE_SERVICE_KAFKA_POLL_INTERVAL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_kafka_poll_interval
+          - name: INFRASTRUCTURE_SERVICE_TIMEOUT_SCRIPT
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_timeout_script
+          - name: INFRASTRUCTURE_SERVICE_METASTORE_DB
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_service_metastore_db
+          - name: INFRASTRUCTURE_SERVICE_HARDDISK_SIZE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_service_hd_size
+          - name: INFRASTRUCTURE_SERVICE_CONTAINER_ENVIRONMENT
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_container_env
+          - name: INFRASTRUCTURE_SERVICE_CONFIG_LOCATION
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_service_config_loc
+          - name: RDECK_JVM_SETTINGS
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_rdeck_jvm_settings
+          - name: INFRASTRUCTURE_SERVICE_SECURITY_GROUP
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_service_security_group
+          - name: INFRASTRUCTURE_SERVICE_EMRFS_CV_ENABLE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_emrfs_cv_enabled
+          - name: INFRASTRUCTURE_SERVICE_EMRFS_CV_PROPS
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_emrfs_cv_props
+          - name: INFRASTRUCTURE_SERVICE_CLUSTER_NAME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_cluster_name
+          - name: EXTERNAL_SERVER_URL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_rundeck_url
+          - name: DATABASE_ADMIN_USER
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_postgres_username
+          - name: RUNDECK_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_postgres_password
+          - name: DATABASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_rundeck_postgres_url
+          - name: INFRASTRUCTURE_SERVICE_BROKER_LIST
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_kafka_service_url
+          - name: INFRASTRUCTURE_SERVICE_SERVICE_ACCOUNT
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_infrastructure_service_account
+          - name: INFRASTRUCTURE_RUNTIME_BASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_runtime_url
+      imagePullSecrets:
+      - name: {{.Values.global.imagePullSecret.name }}

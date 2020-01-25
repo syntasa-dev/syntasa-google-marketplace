@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+data:
+  dynamic-scaling: "true"
+  backend-server-slots-increment: "4"
+metadata:
+  name: {{ .Values.container_metadata.ingress.config_map_name }}
+  namespace: {{ .Release.Namespace }}

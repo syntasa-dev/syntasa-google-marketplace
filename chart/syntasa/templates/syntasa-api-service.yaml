@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.container_metadata.syntasa_api_service.service_name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+    - port: 9090
+  selector:
+    app: {{ .Values.container_metadata.syntasa_api_service.name }}

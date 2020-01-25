@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: {{ .Values.container_metadata.kafka.name }}
+  name: {{ .Values.container_metadata.kafka.external_service_name}}
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    cloud.google.com/load-balancer-type: Internal
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 9092
+      name: internal-1
+      nodePort: 31095
+  selector:
+    app: {{ .Values.container_metadata.kafka.name }}
+  loadBalancerIP: {{ .Values.internal_static_ip_address }}

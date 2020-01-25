@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: {{ .Values.container_metadata.default_backend.name }}
+  name: {{ .Values.container_metadata.default_backend.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: {{ .Values.container_metadata.default_backend.name }}
+  template:
+    metadata:
+      labels:
+        run: {{ .Values.container_metadata.default_backend.name }}
+    spec:
+      containers:
+        - name: {{ .Values.container_metadata.default_backend.name }}
+          image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.default_backend.image_name }}:{{ .Values.global.image.tag }}"
+          imagePullPolicy: {{ .Values.global.image.pullPolicy }}
+          ports:
+          - containerPort: 8080

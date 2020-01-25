@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.container_metadata.syntasa_app_apigateway.name}}
+  namespace: {{ .Release.Namespace }}
+spec:
+  ports:
+    - port: {{ .Values.container_metadata.syntasa_app_apigateway.container_port}}
+  selector:
+    app: {{ .Values.container_metadata.syntasa_app_apigateway.name}}

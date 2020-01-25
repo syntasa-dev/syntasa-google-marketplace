@@ -1,0 +1,181 @@
+# Config Map for Syntasa Configuration Properties file
+# The Data filed is added automatically from the values.yaml file by parsing the
+# config_map_values field and adding them one by one.
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.global.configMap.name }}
+  namespace: {{ .Release.Namespace }}
+
+data:
+  syntasa_runtime_url: "http://{{ .Values.container_metadata.syntasa_runtime_service.name }}.{{ .Release.Namespace }}.svc.cluster.local:8080/services/runtime-service/"
+  syntasa_postgres_name: "{{ .Values.metastore_connection_name }}"
+  syntasa_postgres_username: "{{ .Values.metastore_connection_user }}"
+  syntasa_postgres_password: "{{ .Values.metastore_connection_password }}"
+  syntasa_postgres_host: "{{  .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+  syntasa_postgres_port: "5432"
+  syntasa_postgres_url: "jdbc:postgresql://{{ .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:5432/syntasa"
+  syntasa_rundeck_postgres_url: "jdbc:postgresql://{{ .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:5432/rundeckdb"
+
+  syntasa_kafka_service_url: "{{ .Values.container_metadata.kafka.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:31093"
+  syntasa_kafka_service_port: "31093"
+  syntasa_kafka_service_host: "{{ .Values.container_metadata.kafka.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+
+  syntasa_kafka_external_service_url: "{{ .Values.internal_static_ip_address }}:9092"
+  syntasa_kafka_broker_id: "1"
+  syntasa_kafka_zoo_uri: "localhost:2181"
+  syntasa_kafka_security_protocols: "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,PLAINTEXT_HOST_1:PLAINTEXT"
+  syntasa_kafka_broker_uri: "PLAINTEXT://:9093,PLAINTEXT_HOST://{{ .Values.container_metadata.kafka.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:31093,PLAINTEXT_HOST_1://{{ .Values.internal_static_ip_address }}:9092"
+  syntasa_kafka_confluent_enable: "false"
+  syntasa_kafka_topic_replication_factor: "1"
+  syntasa_kafka_rebalance_delay: "0"
+  syntasa_kafka_message_maxbytes: "10000000"
+  syntasa_kafka_fetch_maxbytes: "10000012"
+  syntasa_kafka_log_retention_interval: "21000"
+  syntasa_kafka_log_cleaner_interval: "1000"
+  syntasa_kafka_topics: "internal.action.request,internal.action.response,internal.action,internal.process.state,internal.process.state.request,internal.process.state.response,internal.connection.state,internal.process.status,internal.job.status,external.emrlogs.request,external.emrlogs.response,external.action,external.action.request,external.action.request,external.status,process.details.request,process.details.response,external.process.preview,external.process.schema,external.cluster.status,internal.container.status,internal.container.request,internal.container.response,internal.container,internal.job.action.request,internal.action.response,internal.job.action.response,external.action.response,internal.metrics,external.job.status.event,external.process.status.event,internal.job.status.event,internal.process.status.event,internal.job.action.execute,internal.job.action.save,internal.status,internal.alert,internal.notification"
+
+  syntasa_zookeeper_client_port: "2181"
+  syntasa_zookeeper_tick_time: "2000"
+
+  syntasa_rundeck_port: "4440"
+  syntasa_api_service_port: "8888"
+  syntasa_mlflow_service_port: "5000"
+
+  syntasa_provider_type: "GOOGLE"
+
+  syntasa_infrastructure_skip_database_setup: "false"
+  syntasa_infrastructure_no_local_mysql: "true"
+  syntasa_infrastructure_rundeck_storage_provider: "db"
+  syntasa_infrastructure_service_group_id: "infrastructure-service-consumer"
+  syntasa_infrastructure_kafka_poll_interval: "100"
+  syntasa_infrastructure_kafka_max_interval: "20000"
+  syntasa_infrastructure_timeout_script: "emr-idletimeout.sh"
+  syntasa_infrastructure_service_metastore_db: "hive_metastore_40"
+  syntasa_infrastructure_service_hd_size: "500"
+  syntasa_infrastructure_container_env: "KUBERNETES"
+  syntasa_infrastructure_service_config_loc: "/opt/syntasa/lib/config"
+  syntasa_infrastructure_rdeck_jvm_settings: "-Dserver.web.context=/rundeck -Drundeck.jetty.connector.forwarded=true"
+  syntasa_infrastructure_service_security_group: ""
+  syntasa_infrastructure_emrfs_cv_enabled: "false"
+  syntasa_infrastructure_emrfs_cv_props: "fs.s3.consistent:true,fs.s3.consistent.metadata.read.capacity:400,fs.s3.consistent.metadata.write.capacity:100"
+  syntasa_infrastructure_cluster_name: "{{ .Values.cluster_name }}"
+  syntasa_infrastructure_rundeck_url: "http://{{ .Values.static_ip_address }}/rundeck"
+  syntasa_infrastructure_service_account: "{{ .Values.infrastructure_service_account }}"
+
+  syntasa_auth_client_id: ""
+  syntasa_auth_client_secret: ""
+  syntasa_auth_types: "LOCAL"
+  syntasa_auth_redirect_url: "http://{{ .Values.static_ip_address }}"
+  syntasa_auth_service_token_timeout: "3600"
+  syntasa_auth_service_refreshtoken_timeout: "86400"
+  syntasa_auth_service_execlusion_urls: "/login,/google,/callback,/refreshtoken,/validateToken,/clientId,/logout,/roles/iamRole,/saml/login,/saml/login/callback,/saml/logout,/saml/logout/callback,/saml/metadata,/saml/idpmetadata,/authtypes,/users/name,/license/validate"
+  syntasa_auth_service_type: "TOKEN"
+  syntasa_auth_service_ssl_store: "deploy/config/syntasa-files/keystore.jks"
+  syntasa_auth_service_keystore_password: "changeit"
+  syntasa_auth_service_oauth2_access_token_url: "https://www.googleapis.com/oauth2/v3/token"
+  syntasa_auth_service_oauth2_client_user_auth_url: "https://accounts.google.com/o/oauth2/auth"
+  syntasa_auth_service_oauth2_client_token_name: "oauth_token"
+  syntasa_auth_service_oauth2_client_authentication_scheme: "query"
+  syntasa_auth_service_oauth2_client_client_auth_scheme: "form"
+  syntasa_auth_service_oauth2_client_scope: "profile"
+  syntasa_auth_service_oauth2_client_user_info: "https://www.googleapis.com/userinfo/v2/me"
+  syntasa_auth_service_oauth2_client_prefer_token_info: "false"
+  syntasa_auth_service_oauth2_client_refresh_token_uri: "https://accounts.google.com/o/oauth2/token"
+  syntasa_auth_service_app_database_url: "jdbc:postgresql://{{ .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}..svc.cluster.local:5432/sma_platform"
+  syntasa_auth_service_oauth2_client_host_domain: "syntasa.com"
+  syntasa_auth_service_license: {{ .Values.syn_license }}
+
+  syntasa_composer_service_mlflow_server: "http://syntasa-mlflow-service:5000"
+  syntasa_composer_service_mlflow_base_path: "mlruns"
+
+  syntasa_mlflow_hostname: "0.0.0.0"
+  syntasa_mlflow_port: "{{ .Values.container_metadata.syntasa_mlflow_service.container_port }}"
+  syntasa_mlflow_server_prefix: "/mlflow"
+  syntasa_mlflow_artifact_base_path: "./mlruns"
+  syntasa_mlflow_workers: "10"
+  syntasa_mlflow_worker_threads: "3"
+  syntasa_mlflow_server_keep_alive: "60"
+
+  syntasa_data_gateway_service_group_id: "datagateway-consumer"
+  syntasa_data_gateway_service_encryption_enable: "true"
+
+  syntasa_event_engine_service_group_id: "event-engine-service-consumer"
+
+  syntasa_execution_service_rundeck_token: "HYNps07xvK3iCsvLnlqU0uVfOdhpiDYD"
+  syntasa_execution_service_user_project: "userjobs"
+  syntasa_execution_service_system_project: "systemjobs"
+  syntasa_execution_service_webhook_url: "http://{{ .Values.container_metadata.syntasa_execution_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:8090/services/execution-service/jobs/jobstatus/"
+  syntasa_execution_service_system_project_path: "/opt/syntasa/jobs/system/"
+  syntasa_execution_service_job_location: "/opt/sma/systemjobs"
+  syntasa_execution_service_alerts: "DEVELOPMENT:FAILED"
+  syntasa_execution_service_group_id: "execution-service-consumer"
+  syntasa_execution_service_rundeck_internal_url: "http://{{ .Values.container_metadata.syntasa_infrastructure_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.container_metadata.syntasa_infrastructure_service.container_port }}/rundeck"
+  syntasa_execution_service_external_hostname: "{{ .Values.static_ip_address }}"
+  syntasa_execution_service_auth_client_url: "http://{{ .Values.container_metadata.syntasa_auth_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.container_metadata.syntasa_auth_service.container_port }}/services/auth-service"
+  syntasa_execution_service_app_database_url: "jdbc:postgresql://{{ .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:5432/sma_business"
+
+  syntasa_job_management_execution_service_endpoint: "http://{{ .Values.container_metadata.syntasa_execution_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.container_metadata.syntasa_execution_service.container_port }}/services/execution-service/v1/jobs/startexecution/"
+  syntasa_job_management_service_group_id_v2: "job-management-consumer-v2"
+  syntasa_job_management_service_notification_enable: 'false'
+  syntasa_job_management_service_external_hostname: "{{ .Values.static_ip_address }}"
+
+  syntasa_runtime_service_encryption_enable: "false"
+  syntasa_runtime_service_config_location: "/opt/syntasa/lib/config"
+  syntasa_runtime_service_hostname: "http://{{ .Values.static_ip_address }}"
+  syntasa_runtime_service_service_account: "{{ .Values.infrastructure_service_account }}"
+  syntasa_runtime_service_use_internal_ip: "false"
+  syntasa_runtime_service_emrfs_cv_props: "fs.s3.consistent:true,fs.s3.consistent.metadata.read.capacity:400,fs.s3.consistent.metadata.write.capacity:100"
+  syntasa_runtime_service_cluster_name: "{{ .Values.cluster_name }}"
+  syntasa_runtime_service_group_id: "runtime-service-consumer"
+  syntasa_runtime_service_kafka_max_interval: "20000"
+  syntasa_runtime_service_kafka_poll_interval: "100"
+  syntasa_runtime_service_container_environment: "KUBERNETES"
+
+  syntasa_state_service_consumer_id: "status-service-consumer"
+  syntasa_state_service_metrics_url: ""
+
+  syntasa_app_auth_service_protocol: "http"
+  syntasa_app_auth_service_host: "{{ .Values.container_metadata.syntasa_auth_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+  syntasa_app_auth_service_port: "{{ .Values.container_metadata.syntasa_auth_service.container_port }}"
+
+  syntasa_app_execution_service_protocol: "http"
+  syntasa_app_execution_service_host: "{{ .Values.container_metadata.syntasa_execution_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+  syntasa_app_execution_service_port: "{{ .Values.container_metadata.syntasa_execution_service.container_port }}"
+
+  syntasa_app_api_service_protocol: "http"
+  syntasa_app_api_service_host: "{{ .Values.container_metadata.syntasa_api_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+  syntasa_app_api_service_port: "{{ .Values.container_metadata.syntasa_api_service.container_port }}"
+
+  syntasa_app_state_service_protocol: "http"
+  syntasa_app_state_service_host: "{{ .Values.container_metadata.syntasa_state_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+  syntasa_app_state_service_port: "{{ .Values.container_metadata.syntasa_state_service.container_port }}"
+
+  syntasa_app_runtime_service_protocol: "http"
+  syntasa_app_runtime_service_host: "{{ .Values.container_metadata.syntasa_runtime_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+  syntasa_app_runtime_service_port: "{{ .Values.container_metadata.syntasa_runtime_service.container_port }}"
+
+  syntasa_app_job_management_service_protocol: "http"
+  syntasa_app_job_management_service_host: "{{ .Values.container_metadata.syntasa_job_management_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+  syntasa_app_job_management_service_port: "{{ .Values.container_metadata.syntasa_job_management_service.container_port }}"
+
+  syntasa_app_protocol: "http"
+  syntasa_app_hostname: "{{ .Values.static_ip_address }}"
+  syntasa_app_http_enable: "true"
+  syntasa_app_http_port: "8888"
+  syntasa_app_https_enable: "false"
+  syntasa_app_synthesizer_enable: "true"
+  syntasa_app_composer_enable: "true"
+  syntasa_app_orchestrator_enable: "true"
+  syntasa_app_token_timeout: "31090"
+
+
+
+
+
+
+#  {{- range $key, $value := .Values.config_map_values }}
+#  {{ $key }} : {{ tpl ($value | quote) $ }}
+#  {{- end }}
+

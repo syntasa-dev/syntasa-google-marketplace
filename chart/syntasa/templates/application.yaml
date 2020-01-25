@@ -1,0 +1,64 @@
+apiVersion: app.k8s.io/v1beta1
+kind: Application
+metadata:
+  name: "{{ .Release.Name }}"
+  namespace: "{{ .Release.Namespace }}"
+  labels:
+    app.kubernetes.io/name: "{{ .Release.Name }}"
+  annotations:
+    marketplace.cloud.google.com/deploy-info: '{"partner_id": "{{ .Values.partner_id }}", "product_id": "Syntasa", "partner_name": "Syntasa"}'
+spec:
+  descriptor:
+    type: Syntasa
+    version: '1.0'
+    maintainers:
+      - name: SYNTASA
+        url: https://www.syntasa.com
+    keywords:
+      - "machine learning"
+      - "data analytics"
+      - "data preparation"
+      - "data processing"
+      - "kubernetes"
+      - "syntasa"
+      - "k8s"
+    description: |-
+      SYNTASA is a Machine Learning and Data Analytics Platform that helps Engineers, Data Scientists, and Analysts
+      prepare, process, learn, and deliver analysis into customer data sets.  These datasets can consist of any type
+      of data including web log data, clickstream data and CRM data.
+
+      # Getting Started
+      Please visit the SYNTASA website to learn how to register a new License Key
+        - Placeholder for License Key Retrieval
+
+      # Next Steps
+      After acquiring a License please, please visit the SYNTASA GCP Kubernetes Markplace Documentation to see how
+      to get started with SYNTASA.
+
+      # Terms of Service
+        - Placeholder for Terms of Service
+
+      #Support
+      For support please reach out to devops@syntasa.com or contact #
+
+    links:
+      - description: SYNTASA Website
+        url: "https://www.syntasa.com"
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: "{{ .Release.Name }}"
+  componentKinds:
+    - group: v1
+      kind: Service
+    - group: apps/v1
+      kind: Deployment
+    - group: v1
+      kind: ConfigMap
+    - group: v1
+      kind: Secret
+    - group: extensions/v1beta1
+      kind: Ingress
+    - group: v1
+      kind: PersistentVolumeClaim
+#   - group: v1
+#     kind: PersistentVolume

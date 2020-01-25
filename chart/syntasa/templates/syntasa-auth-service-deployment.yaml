@@ -1,0 +1,161 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.container_metadata.syntasa_auth_service.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.container_metadata.syntasa_auth_service.name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.container_metadata.syntasa_auth_service.name }}
+    spec:
+      containers:
+      - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.syntasa_auth_service.image_name }}:{{ .Values.global.image.tag }}"
+        name: syntasa-auth-service
+        imagePullPolicy: Always
+        env:
+          - name: AUTH_SERVICE_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_postgres_username
+          - name: AUTH_SERVICE_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_postgres_password
+          - name: AUTH_SERVICE_DATABASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_postgres_url
+          - name: AUTH_SERVICE_TOKEN_TIMEOUT
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_token_timeout
+          - name: AUTH_SERVICE_REFRESHTOKEN_TIMEOUT
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_refreshtoken_timeout
+          - name: AUTH_SERVICE_EXCLUSION_URLS
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_execlusion_urls
+          - name: AUTH_SERVICE_TYPE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_type
+          - name: AUTH_SERVICE_SSL_STORE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_ssl_store
+          - name: AUTH_SERVICE_KEY-STORE_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_keystore_password
+          - name: AUTH_OAUTH2_CLIENT_CLIENTID
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_client_id
+          - name: AUTH_SERVICE_AUTH_TYPES
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_types
+          - name: AUTH_OAUTH2_CLIENT_CLIENTSECRET
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_client_secret
+          - name: AUTH_OAUTH2_CLIENT_ACCESSTOKENURL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_access_token_url
+          - name: AUTH_OAUTH2_CLIENT_USERAUTHORIZATIONURI
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_user_auth_url
+          - name: AUTH_OAUTH2_CLIENT_TOKENNAME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_token_name
+          - name: AUTH_OAUTH2_CLIENT_AUTHENTICATIONSCHEME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_authentication_scheme
+          - name: AUTH_OAUTH2_CLIENT_CLIENTAUTHENTICATIONSCHEME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_client_auth_scheme
+          - name: AUTH_OAUTH2_CLIENT_SCOPE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_scope
+          - name: AUTH_OAUTH2_CLIENT_USERINFOURI
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_user_info
+          - name: AUTH_OAUTH2_CLIENT_PREFERTOKENINFO
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_prefer_token_info
+          - name: AUTH_OAUTH2_CLIENT_REDIRECTURI
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_redirect_url
+          - name: AUTH_OAUTH2_CLIENT_REFRESHTOKENURI
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_refresh_token_uri
+          - name: AUTH_SERVICE_APP_USERNAME
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_postgres_username
+          - name: AUTH_SERVICE_APP_PASSWORD
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_postgres_password
+          - name: AUTH_SERVICE_APP_DATABASE_URL
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_app_database_url
+          - name: AUTH_OAUTH2_CLIENT_HOSTDOMAIN
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_oauth2_client_host_domain
+          - name: AUTH_SERVICE_LICENSE_KEY
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_auth_service_license
+        ports:
+        - containerPort: {{ .Values.container_metadata.syntasa_auth_service.container_port }}
+          name: auth-svc-port
+      imagePullSecrets:
+      - name: {{.Values.global.imagePullSecret.name }}

@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.container_metadata.ingress.backend_name }}
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    ingress.kubernetes.io/ssl-redirect: "false"
+    kubernetes.io/ingress.class: haproxy
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /rundeck
+        backend:
+          serviceName: {{ .Values.container_metadata.syntasa_infrastructure_service.name }}
+          servicePort: {{ .Values.container_metadata.syntasa_infrastructure_service.container_port | int }}
+      - path: /
+        backend:
+          serviceName: {{ .Values.container_metadata.syntasa_app_apigateway.name }}
+          servicePort: {{ .Values.container_metadata.syntasa_app_apigateway.container_port | int }}
+      - path: /mlflow
+        backend:
+          serviceName: {{ .Values.container_metadata.syntasa_mlflow_service.name }}
+          servicePort: {{ .Values.container_metadata.syntasa_mlflow_service.container_port | int }}
+      - path: /ajax-api/2.0
+        backend:
+          serviceName: {{ .Values.container_metadata.syntasa_mlflow_service.name }}
+          servicePort: {{ .Values.container_metadata.syntasa_mlflow_service.container_port | int }}

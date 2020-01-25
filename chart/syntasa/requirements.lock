@@ -1,0 +1,6 @@
+dependencies:
+- name: syntasa-kafka
+  repository: file://dependency_charts/syntasa-kafka
+  version: 5.0.1
+digest: sha256:02277b07413a6e34488881f615f51fc720114b9685dbf7af4995f7cf98487bac
+generated: "2020-01-13T01:22:18.2210051-05:00"

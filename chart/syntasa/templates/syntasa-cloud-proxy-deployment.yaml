@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.container_metadata.sql_proxy.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.container_metadata.sql_proxy.name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.container_metadata.sql_proxy.name }}
+    spec:
+      containers:
+        - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.sql_proxy.image_name }}:{{ .Values.global.image.tag }}"
+          name: {{ .Values.container_metadata.sql_proxy.service_name }}
+          imagePullPolicy: Always
+          command: ["/cloud_sql_proxy","-instances=$(CLOUD_POSTGRES_INSTANCE_NAME)=tcp:0.0.0.0:5432"]
+          env:
+            - name: CLOUD_POSTGRES_INSTANCE_NAME
+              valueFrom:
+                configMapKeyRef:
+                  name: syntasa-config
+                  key: syntasa_postgres_name

@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-tester"
+  labels:
+    app.kubernetes.io/name: "{{ .Release.Name }}"
+  annotations:
+    marketplace.cloud.google.com/verification: test
+spec:
+  containers:
+  - name: tester
+    image: "{{ .Values.syntasa_test_image_name }}"
+    volumeMounts:
+    - name: config-volume
+      mountPath: /tester
+    command: ["/bin/sh"]
+    args: ["-c", "echo SUCCESS; exit 0"]
+  restartPolicy: Never
+#  volumes:
+#  - name: config-volume
+#    configMap:
+#      name: "configmap-test"
+#---
+#apiVersion: v1
+#kind: ConfigMap
+#metadata:
+#  name: "configmap-test"
+#  labels:
+#    app.kubernetes.io/name: "{{ .Release.Name }}"
+#  annotations:
+#    marketplace.cloud.google.com/verification: test
+#data:
+#  run.sh: |-
+#    echo SUCCESS
+#    return 0
