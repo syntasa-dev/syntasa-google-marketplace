@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 export REGISTRY=gcr.io/syntasa-public
-export DEPLOYER_TAG=5.0.2
+export DEPLOYER_TAG=5.0
 export TAG=latest
 export APP_NAME=syntasa
 
