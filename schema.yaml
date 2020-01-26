@@ -419,6 +419,8 @@ required:
 - certificate
 
 x-google-marketplace:
+  partnerId: syntasa-public
+  solutionId: syntasa
   clusterConstraints:
     resources:
     - replicas: 1

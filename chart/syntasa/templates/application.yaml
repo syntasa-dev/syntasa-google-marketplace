@@ -6,7 +6,7 @@ metadata:
   labels:
     app.kubernetes.io/name: "{{ .Release.Name }}"
   annotations:
-    marketplace.cloud.google.com/deploy-info: '{"partner_id": "{{ .Values.partner_id }}", "product_id": "Syntasa", "partner_name": "Syntasa"}'
+    marketplace.cloud.google.com/deploy-info: '{"partner_id": "syntasa-public", "product_id": "Syntasa", "partner_name": "Syntasa"}'
 spec:
   descriptor:
     type: Syntasa
