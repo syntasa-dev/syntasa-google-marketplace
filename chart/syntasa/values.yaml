@@ -3,14 +3,13 @@
 # Declare variables to be passed into your templates.
 
 ## User Provided Properties
-#name: {{ .Release.Name }}
-#namespace: {{ .Release.Namespace }}
+#name: "syntasa"
+#namespace: "syntasa"
 metastore_connection_name: ""
 metastore_connection_user: ""
 metastore_connection_password: ""
 cluster_name: ""
-static_ip_name: ""
-static_ip_address: ""
+static_ip_address: "-"
 internal_static_ip_address: ""
 infrastructure_service_account: ""
 partner_id: ""
@@ -24,6 +23,9 @@ syn_kube_storage_class_size: "20G"
 
 syn_secret_key: "ZmI2YjI5NDRkMzgwZDFlNA=="
 syn_license: "test-license"
+
+TLS_CERTIFICATE_CRT: "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tTUlJQyt6Q0NBZU9nQXdJQkFnSUpBTWtYNUZjTmQ2WGtNQTBHQ1NxR1NJYjNEUUVCQlFVQU1CUXhFakFRQmdOVkJBTU1DV3h2WTJGc2FHOXpkREFlRncweU1EQXhNall3T0RVNE16WmFGdzB6TURBeE1qTXdPRFU0TXpaYU1CUXhFakFRQmdOVkJBTU1DV3h2WTJGc2FHOXpkRENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0NBUW9DZ2dFQkFLY3F1SC8zS2diaVhCTjRqRTUya242SGZXak40NWJCWGd2YlZJaGhVWmxJeTV3RzFoeEh1bGNYNkM2MW0wOE1oc0hPamZBbkZKUHpCTXpIUkc4QzhTODRrT1NzTkZaSGo0eEc4S0dwK0dQTTJUQmsrWHJRclhEZGV4OGIxKzE5SVRlQmJDTUFJZURFM1ppYkZGSC9vRjB4aUFYSWNTdDFxSkY2N29HSTE1aENiWmR1cVdQdlZuOG1iMUhnaU9MSHgrUVF3TEtFY0dncUZ3U1YrMkZGOXVEKzZnRWFLUmJ5TVkrSnBwQVVoRUQ2bzdEelYvWmNKOHRKcDFaYXZLY2pvd1dGOUJnUkF1bmkxbHJTeCs4N1UzYkdKWXZLWSswNUE1blRVQjhHU2E1RXl4Yyt4L0NLcWQxVEsxbUdiUGwwY0drWjRNemxtRFp6WmdJbDhqcmNKbmtDQXdFQUFhTlFNRTR3SFFZRFZSME9CQllFRkN2TTZPb3NNSFd1TG9RWU9EUW1oQm43TEpINk1COEdBMVVkSXdRWU1CYUFGQ3ZNNk9vc01IV3VMb1FZT0RRbWhCbjdMSkg2TUF3R0ExVWRFd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVGQlFBRGdnRUJBSGQ1MUx0amtJQXZybktjWVVHYzBxUFNlOXRTNFZjOXh3Q3FTaEF0OGNvTmo2TVNBY2FxWWgvdVFGSXB6YlB5a3NGUjJZWk9SY2VMRE1XYVFoaEZpcXRkdmNZTXZkallycTlRai9hbndadW1OTjlDOWphV2ppYi9jMHBXelV6dkFQUUE0cFdJMFgwMTdjZFh2UERNVFRDTzZvaVR5dzRtZjBzWmxwMnZGelpmK0tXTFV1RmhUdnl1UzBnSEdWam16UlhiUUdHQlFMa1lKY0VKSHo5YXQ5aGRrck96b282UVE5Wlk4WFZzZzQva3ZmVG9ldGx2Z25PK3JkckJvRkQxVkNNM3hveldZS2ZabkoxUkNTM3oxTlh1UllBZFpWVk5sZmpnTThPdW1CcEVHNUNUa1YvU1lXdGR2b1ZiUVFkQ0FLRXRhRHJIUE1IMWZsWHBrQ3dNOUh3PS0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0="
+TLS_CERTIFICATE_KEY: "LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLU1JSUVvZ0lCQUFLQ0FRRUFweXE0Zi9jcUJ1SmNFM2lNVG5hU2ZvZDlhTTNqbHNGZUM5dFVpR0ZSbVVqTG5BYldIRWU2Vnhmb0xyV2JUd3lHd2M2TjhDY1VrL01Fek1kRWJ3THhMemlRNUt3MFZrZVBqRWJ3b2FuNFk4elpNR1Q1ZXRDdGNOMTdIeHZYN1gwaE40RnNJd0FoNE1UZG1Kc1VVZitnWFRHSUJjaHhLM1dva1hydWdZalhtRUp0bDI2cFkrOVdmeVp2VWVDSTRzZkg1QkRBc29Sd2FDb1hCSlg3WVVYMjRQN3FBUm9wRnZJeGo0bW1rQlNFUVBxanNQTlg5bHdueTBtblZscThweU9qQllYMEdCRUM2ZUxXV3RMSDd6dFRkc1lsaThwajdUa0RtZE5RSHdaSnJrVExGejdIOElxcDNWTXJXWVpzK1hSd2FSbmd6T1dZTm5ObUFpWHlPdHdtZVFJREFRQUJBb0lCQUZNM3FDdEQ3cThJcG8rbTFpb0ZTdjRrRXVGR2hZSzU5a2h1d2xFMktUbm1qRDI3QllHRWo1WGx0OWJ3MzBUbDFudktpTXhCbURQaXFjUUxldHpNbVNaSndZK2t6bFVaUUxPemFQMEJzVDUxYnJWeHZ1Uk4xOW0wMkNMdmFIbTRiZjNFdHdGaGdudnpaT0VnYW1nN21paHFqTzFjRUVKelN4eEpGMHh5dytqdWNwQVQ5Y2EydTRRZGNTSytpNFdWcjByMXc5T3QraG9uQ2Q2eTNCdU1nR0NaSjdQUU1Qc1hsSFIwRnp6S3hDNlVocXNpVFlYcmxNNFd3QzdGL3lyZytvZk1PZkRBalk3L2pJNWVkbWpyY0tnLzh0Wm1mWGlFdGZ1VGE5SGh2YThnUGtlRFNudXZ2Y2JlTitZbFFFTEZEOTBZTmhFK0ZiSFhacllsWmgxeFJsRUNnWUVBMk53V1VVempUNnhhRVEzbHpQRnk1R2FMM1Q5QS9ZNjNtdDhlbWkvS0tWeFNzbi96Nk9zNW0rMTlSQ2FrUmJNSmEyTVBCUkJyNWg0dE12bTZ1aUV1eUZFYTdhSnBQdHBrdmxHNlAwelVCbjhVcWhhSitWbHVLVTNKcXNaSE5MNVhYSFR5MkhWNVVtMWFkQlIxQklIOHBuNHg3TXl5aXlOR3pMN3p5MFZDd1AwQ2dZRUF4VmFZdmxQckEzdGV4MVQ4WHoyQms2a0xaaVpqOVp0RXZQNXdVYkZaYjBVdU9DUHNUOXFzNjRIclppM2hzMXU5dUVXSkM1dlpSbzAzdGtVMWZhTy8yS3FXaDVYMDNaTGtyWWhHbElUcXFKQ2xKWUNHV3ZoVzBhblJtL09sQXEzTHNpSXhyaWdpUFdPbTltYmUzeklSbkgvYU5GRWxMYlBGMDFiOENmdUxRaTBDZ1lCYjBUT1IwS0FkeDdlS3FQdTNQak9MQ1BBSENSVVhSaW51NUxFc1R6ZWxNM1hBSmZTN2xYeWF6SDdSTUJzMWQ0eHhiMHVZdFU4NTYyVHZ4RlNQSWlXUW91Wm4zdS80c0xjZTdiT1J3Wkd6L25KZFlaV2hnWC9tOVF5QnhkbTROeTc5OG5ZdnQrMWFQUHFqVTFZSVJwRVdYUy8rTnQwUmxDb1IzbmVTaFF5eWNRS0JnRjNEKytmVHNBT0RoMUZuakZNa3dvRUsvYU9YOGo4dGU4ZmhqalVDODkvdkd6c0p0cXRxMkdjKzREODQ1ZGwzYWZvNDhCbFlBREdKd0VNWE40ZHZXeVQwU1hvN1FwSlZ6ZHEydWZLd0JWLzYrcjJMQ0V3SlhCZGJmWUdBajVOcVNUTm5FL3dRamRSbG1WdlRIV3NvT3o0RmNnVVIyWHlSd3huY1p2M0hUREF4QW9HQUFrMXMvTnQ2RThpUnFtTVc4YlVqYlA1TkliMEJwM3pKcm53NXdVMUVKZ0ZiWmxyYjY0MlUvaFVvczU4R3lHdEFFN1paaHd1c21HbGJ5aElzeVljWlhZemN2bjFsV2xlRkpUb0dUU0tqd1J4Y3ZGYzRVZ1ZjL0NyQ2VUN3g4ZEN3UXF3dUR1TXhPM3I2QVlpRWZCMTdwUkpuVi9nZlBIUkF3OEh5RTcrOElMOD0tLS0tLUVORCBSU0EgUFJJVkFURSBLRVktLS0tLQ=="
 
 global:
   application:
@@ -57,126 +59,126 @@ volume_claims:
 container_metadata:
   kafka:
     name: "syntasa-kafka"
-    image_name: ""
+    image_name: "kafka"
     service_name: "kafka-service"
     external_service_name: "kafka-external-service"
 
   zookeeper:
     name: "zookeeper"
-    image_name: ""
+    image_name: "zookeeper"
 
   ingress:
     name: "syntasa-ingress"
     config_map_name: "haproxy-configmap"
     backend_name: "syntasa-app"
-    image_name: ""
+    image_name: "haproxy-ingress"
 
   default_backend:
     name: "ingress-default-backend"
-    image_name: ""
+    image_name: "defaultbackend"
 
   sql_proxy:
     name: "syntasa-database"
     service_name: "syntasa-database-service"
-    image_name: ""
+    image_name: "cloudsql-proxy"
 
   syntasa_infrastructure_service:
     name: "syntasa-infrastructure-service"
-    image_name: ""
+    image_name: "syntasa-infrastructure-service"
     container_port: "4440"
     service_name: "syntasa-infrastructure-service"
 
   syntasa_api_service:
     name: "syntasa-api-service"
-    image_name: ""
+    image_name: "syntasa-api-service"
     service_name: "syntasa-api-service-backend"
     container_port: "9090"
 
   syntasa_auth_service:
     name: "syntasa-auth-service"
-    image_name: ""
+    image_name: "syntasa-auth-service"
     service_name: "syntasa-auth-service"
     container_port: "9443"
 
   syntasa_composer_service:
     name: "syntasa-composer-service"
-    image_name: ""
+    image_name: "syntasa-composer-service"
 
   syntasa_mlflow_service:
     name: "syntasa-mlflow-service"
-    image_name: ""
+    image_name: "syntasa-mlflow"
     service_name: "syntasa-mlflow-service"
     container_port: "5000"
 
   syntasa_data_gateway_service:
     name: "syntasa-data-gateway"
-    image_name: ""
+    image_name: "syntasa-data-gateway-service"
     service_name: "syntasa-data-gateway-service"
     container_port: "8050"
 
   syntasa_event_engine_service:
     name: "syntasa-event-engine-service"
-    image_name: ""
+    image_name: "syntasa-event-engine-service"
     service_name: "syntasa-event-engine-service"
     container_port: "8040"
 
   syntasa_execution_service:
     name: "syntasa-execution-service"
-    image_name: ""
+    image_name: "syntasa-execution-service"
     service_name: "syntasa-execution-service"
     container_port: "8090"
 
   syntasa_job_management_service:
     name: "syntasa-job-management-service"
-    image_name: ""
+    image_name: "syntasa-job-management-service-v2"
     service_name: "syntasa-job-management-service"
     container_port: "8090"
 
   syntasa_notification_service:
     name: "syntasa-notification-service"
-    image_name: ""
+    image_name: "syntasa-notification-service"
     service_name: "syntasa-notification-service"
     container_port: "8300"
 
   syntasa_runtime_service:
     name: "syntasa-runtime-service"
-    image_name: ""
+    image_name: "syntasa-runtime-service"
     service_name: "syntasa-runtime-service"
     container_port: "8080"
 
   syntasa_alert_service:
     name: "syntasa-alert-service"
-    image_name: ""
+    image_name: "syntasa-alert-service"
     service_name: "syntasa-alert-service"
 
   syntasa_state_service:
     name: "syntasa-state-service"
-    image_name: ""
+    image_name: "syntasa-state-service"
     service_name: "syntasa-state-service"
     container_port: "8200"
 
   syntasa_app_preview:
     name: "syntasa-app-preview"
-    image_name: ""
+    image_name: "syntasa-app-preview"
     service_name: "syntasa-app-preview"
 
   syntasa_app_platform:
     name: "syntasa-app-platform"
-    image_name: ""
+    image_name: "syntasa-app-platform"
     service_name: "syntasa-app-platform"
 
   syntasa_app_business:
     name: "syntasa-app-business"
-    image_name: ""
+    image_name: "syntasa-app-business"
     service_name: "syntasa-app-business"
 
   syntasa_app_appdatagateway:
     name: "syntasa-app-appdatagateway"
-    image_name: ""
+    image_name: "syntasa-app-appdatagateway"
     service_name: "syntasa-app-appdatagateway"
 
   syntasa_app_apigateway:
     name: "syntasa-app-apigateway"
-    image_name: ""
+    image_name: "syntasa-app-apigateway"
     service_name: "syntasa-app-apigateway"
     container_port: "8888"
