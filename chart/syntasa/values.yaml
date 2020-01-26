@@ -31,7 +31,7 @@ global:
   application:
     name: "Syntasa"
   image:
-    repository: gcr.io/syntasa-devops-sandbox/syntasa
+    repository: gcr.io/syntasa-public/syntasa
     tag: 5.0.2
     pullPolicy: IfNotPresent
   replicaCount: 1
