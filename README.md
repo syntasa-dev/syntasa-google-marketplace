@@ -100,4 +100,5 @@ gathered by:
 > 4. You ip will be in the format https://<some_ephemeral_ip>
 
 For questions and comments please reach out to info@syntasa.com
+
 For technical guidance please reach out to support@syntasa.com or devops@syntasa.com
