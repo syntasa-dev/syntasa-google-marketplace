@@ -48,24 +48,17 @@ properties:
       x-google-marketplace:
         type: STRING
 
-  internal_static_ip_address:
-      type: string
-      title: IP Address of Reserved Internal IP (Required)
-      default: ""
-      x-google-marketplace:
-        type: STRING
-
   syn_secret_key:
     type: string
     title: Secret key for data encryption (Required)
-    default: "ZmI2YjI5NDRkMzgwZDFlNA=="
+    default: ""
     x-google-marketplace:
       type: MASKED_FIELD
 
   syn_license:
     type: string
     title: Syntasa License key (Required)
-    default: "test-license-1"
+    default: ""
     x-google-marketplace:
       type: STRING
 
@@ -117,7 +110,7 @@ properties:
     type: string
     title: Source Ip Address filter
     description: Comma separated list of white list ipaddress. Leave it empty if filtering is not required.
-    default: ""
+    default: "0.0.0.0/0"
 
   certificate:
     type: string
@@ -411,7 +404,6 @@ required:
 - metastore_connection_password
 - cluster_name
 - static_ip_address
-- internal_static_ip_address
 - infrastructure_service_account
 - syn_secret_key
 - syn_license
