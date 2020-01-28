@@ -24,6 +24,20 @@ spec:
       - name: {{ .Values.container_metadata.kafka.name }}
         image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.kafka.image_name }}:{{ .Values.global.image.tag }}"
         imagePullPolicy: {{ .Values.global.image.pullPolicy }}
+        command:
+         - sh
+         - "-c"
+         - |
+           /bin/bash <<'EOF'
+
+           # Normal script content possible here
+             export BROKER_EXTERNAL_HOSTNAME=$(curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/hostname)
+             export KAFKA_ADVERTISED_LISTENERS="PLAINTEXT://:9093,PLAINTEXT_HOST://kafka-service.default.svc.cluster.local:31093,PLAINTEXT_HOST_1://${BROKER_EXTERNAL_HOSTNAME}:31094"
+             echo "external-hostname $BROKER_EXTERNAL_HOSTNAME"
+             echo "PLAINTEXT://:9093,PLAINTEXT_HOST://kafka-service.default.svc.cluster.local:31093,PLAINTEXT_HOST_1://${BROKER_EXTERNAL_HOSTNAME}:31094"
+             ./run.sh
+           
+           EOF
         ports:
         - containerPort: 9092
         - containerPort: 31093
@@ -44,11 +58,6 @@ spec:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_kafka_security_protocols
-          - name: KAFKA_ADVERTISED_LISTENERS
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.global.configMap.name }}
-                key: syntasa_kafka_broker_uri
           - name: CONFLUENT_METRICS_ENABLE
             valueFrom:
               configMapKeyRef:

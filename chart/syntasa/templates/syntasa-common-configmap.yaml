@@ -26,7 +26,6 @@ data:
   syntasa_kafka_broker_id: "1"
   syntasa_kafka_zoo_uri: "localhost:2181"
   syntasa_kafka_security_protocols: "PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT,PLAINTEXT_HOST_1:PLAINTEXT"
-  syntasa_kafka_broker_uri: "PLAINTEXT://:9093,PLAINTEXT_HOST://{{ .Values.container_metadata.kafka.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:31093,PLAINTEXT_HOST_1://{{ .Values.internal_static_ip_address }}:9092"
   syntasa_kafka_confluent_enable: "false"
   syntasa_kafka_topic_replication_factor: "1"
   syntasa_kafka_rebalance_delay: "0"
