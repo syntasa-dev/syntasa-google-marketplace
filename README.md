@@ -20,6 +20,9 @@ To install using MPDEV, please see: [`MPDEV_INSTALLATION.md`](/docs/MPDEV_INSTAL
 When configuring the SYNTASA app, you will need to enter the below fields.  Please see the descriptions for the what each
 field is and why it is required.
 
+*Before beginning, Please make sure that your Google Cloud Platform IAM user has the necessary Kubernetes Engine Admin Permissions.  This is required
+to create Kubernetes Service resources.*
+
 **Namespace**
 
 >Namespace is by default set to the default namespace.  If required, please choose a namespace of your liking, most common

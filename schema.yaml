@@ -27,7 +27,7 @@ form:
                <p><u><i>Storage size for persistent volumes</i></u> - Volume sizes to use for persistent disks.</p>
 
                <p>For more SYNTASA GCP Marketplace Configuration Information, please see the following guide</p>
-               <p><a href="https://github.com/syntasa-dev/syntasa-google-marketplace">Syntasa Marketplace Documentation</a></p>
+               <p><a href="https://github.com/syntasa-dev/syntasa-google-marketplace#syntasa-google-cloud-marketplace-app-configuration-parameters">Syntasa Marketplace Documentation</a></p>
 
                <p>For any additional support please contact -- support@syntasa.com</p>
 
