@@ -81,9 +81,7 @@ helm install --namespace syntasa syntasa ./ --set \
 metastore_connection_name=<my_sql_connection_name>, \
 metastore_connection_user=<mysql_connection_user>, \
 metastore_connection_password=<mysql_connection_password>, \
-cluster_name=<my_kubernetes_cluster_name>, \
 static_ip_address=<my_external_static_ip_address>, \
-internal_static_ip_address=<my_internal_static_ip_address>, \
 infrastructure_service_account=<my_iam_service_account_email>, \
 whitelist_ips=<comma_separated_list_of_ip_whitelists> \
 syn_kube_service_account=syntasa, \
