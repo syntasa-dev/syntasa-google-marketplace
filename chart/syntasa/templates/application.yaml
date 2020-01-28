@@ -65,6 +65,15 @@ spec:
   selector:
     matchLabels:
       app.kubernetes.io/name: "{{ .Release.Name }}"
+  info:
+  - name: Syntasa Application Url
+    type: Reference
+    valueFrom:
+      type: ServiceRef
+      serviceRef:
+        name: syntasa-ingress
+        port: 443
+        path: /
   componentKinds:
     - group: v1
       kind: Service
