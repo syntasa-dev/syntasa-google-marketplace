@@ -9,24 +9,7 @@ form:
                To request a Free Trial License for the SYNTASA platform.</p>
                <p><b>**This must be done prior to installing SYNTASA in the GCP Marketplace**</b></p>
 
-
-               <h3>SYNTASA Marketplace Configuration Parameters</h3>
-               <p>PLEASE MAKE SURE YOUR USER HAS THE KUBERNETES ENGINE ADMIN PERMISSIONS IN THE GOOGLE IAM PAGE</p>
-               <p><u><i>Namespace</i></u> - Please select any namespace to use.  e.g. 'syntasa'</p>
-               <p><u><i>App Instance Name</i></u> - Name you want to use for the installation. e.g. 'syntasa' </p>
-               <p><u><i>License Key</i></u> - License Key provided by SYNTASA</p>
-               <p><u><i>Secret Key</i></u> - Secret Key provided by SYNTASA</p>
-               <p><u><i>IP Address of Reserved External IP</i></u> - If you wish to use a static ip, please specify it here, otherwise leave as default.</p>
-               <p><u><i>Source IP Address Filter</i></u> - IP addresses to open the SYNTASA application to.  e.g. '10.10.0.1/32,10.10.1.1/32'</p>
-               <p><u><i>External Metastore Connection Name</i></u> - Cloud SQL Postgres Database connection name</p>
-               <p><u><i>External Metastore Username</i></u> - Cloud SQL Postgres Database username e.g. 'postgres'</p>
-               <p><u><i>External Metastore Password</i></u> - Cloud SQL Postgres Database password</p>
-               <p><u><i>GCP Iam Role</i></u> - Google Cloud IAM Role to use for accessing Infrastructure Services</p>
-               <p><u><i>Syntasa Service Account Agent</i></u> - Kubernetes service account to use.  Please create a new service account</p>
-               <p><u><i>Storage Class</i></u> - Storage Class to use.  Please select a new storage class</p>
-               <p><u><i>Storage size for persistent volumes</i></u> - Volume sizes to use for persistent disks.</p>
-
-               <p>For more SYNTASA GCP Marketplace Configuration Information, please see the following guide</p>
+               <p>Please see the following guide for more information on how to fill out the SYNTASA Google Marketplace Configuration Parameters/p>
                <p><a href="https://github.com/syntasa-dev/syntasa-google-marketplace#syntasa-google-cloud-marketplace-app-configuration-parameters">Syntasa Marketplace Documentation</a></p>
 
                <p>For any additional support please contact -- support@syntasa.com</p>
