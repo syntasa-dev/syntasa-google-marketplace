@@ -1,4 +1,4 @@
-# SYNTASA Data Analytics and ML Platform for Google Marketplace
+# SYNTASA Customer Intelligence Platform for Google Marketplace
 This Repository contains the SYNTASA Google Marketplace deployment scripts using HELM and the GOOGLE development toolkit located here:
 
 [Google Cloud Marketplace](https://github.com/GoogleCloudPlatform/marketplace-k8s-app-tools)
