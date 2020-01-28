@@ -1,5 +1,36 @@
 applicationApiVersion: v1beta1
 
+form:
+- widget: help
+  description: <h2>Thank you for choosing SYNTASA</h2>
+               <p>Here are some tips to help you get started with SYNTASA on Google Cloud Marketplace</p>
+
+               <p>Before beginning, please visit <a href="https://syntasa.com/gcp-marketplace-license-request">Syntasa License Request</a>
+               To request a Free Trial License for the SYNTASA platform.</p>
+               <p><b>**This must be done prior to installing SYNTASA in the GCP Marketplace**</b></p>
+
+
+               <h3>SYNTASA Marketplace Configuration Parameters</h3>
+
+               <p><u><i>Namespace</i></u> - Please select any namespace to use.  e.g. 'syntasa'</p>
+               <p><u><i>App Instance Name</i></u> - Name you want to use for the installation. e.g. 'syntasa' </p>
+               <p><u><i>License Key</i></u> - License Key provided by SYNTASA</p>
+               <p><u><i>Secret Key</i></u> - Secret Key provided by SYNTASA</p>
+               <p><u><i>IP Address of Reserved External IP</i></u> - If you wish to use a static ip, please specify it here, otherwise leave as default.</p>
+               <p><u><i>Source IP Address Filter</i></u> - IP addresses to open the SYNTASA application to.  e.g. '10.10.0.1/32,10.10.1.1/32'</p>
+               <p><u><i>External Metastore Connection Name</i></u> - Cloud SQL Postgres Database connection name</p>
+               <p><u><i>External Metastore Username</i></u> - Cloud SQL Postgres Database username e.g. 'postgres'</p>
+               <p><u><i>External Metastore Password</i></u> - Cloud SQL Postgres Database password</p>
+               <p><u><i>GCP Iam Role</i></u> - Google Cloud IAM Role to use for accessing Infrastructure Services</p>
+               <p><u><i>Syntasa Service Account Agent</i></u> - Kubernetes service account to use.  Please create a new service account</p>
+               <p><u><i>Storage Class</i></u> - Storage Class to use.  Please select a new storage class</p>
+               <p><u><i>Storage size for persistent volumes</i></u> - Volume sizes to use for persistent disks.</p>
+
+               <p>For more SYNTASA GCP Marketplace Configuration Information, please see the following guide</p>
+               <p><a href="https://github.com/syntasa-dev/syntasa-google-marketplace">Syntasa Marketplace Documentation</a></p>
+
+               <p>For any additional support please contact -- support@syntasa.com</p>
+
 properties:
   name:
     type: string
@@ -13,9 +44,36 @@ properties:
     x-google-marketplace:
       type: NAMESPACE
 
+  syn_license:
+    type: string
+    title: License key.  Please see documentation (Required)
+    default: ""
+    x-google-marketplace:
+      type: STRING
+
+  syn_secret_key:
+    type: string
+    title: Secret Key.  Please see documentation (Required)
+    default: ""
+    x-google-marketplace:
+      type: MASKED_FIELD
+
+  static_ip_address:
+      type: string
+      title: IP Address of Reserved External IP (Optional)
+      default: "-"
+      x-google-marketplace:
+        type: STRING
+
+  whitelist_ips:
+    type: string
+    title: Source IP Address filter
+    description: Comma separated list of IP Addresses to whitelist.
+    default: "0.0.0.0/0"
+
   metastore_connection_name:
       type: string
-      title: External Metastore Name (Required)
+      title: External Metastore Connection Name (Required)
       default: ""
       x-google-marketplace:
         type: STRING
@@ -33,34 +91,6 @@ properties:
       default: ""
       x-google-marketplace:
         type: MASKED_FIELD
-
-  cluster_name:
-      type: string
-      title: Kubernetes Cluster Name
-      default: ""
-      x-google-marketplace:
-        type: STRING
-
-  static_ip_address:
-      type: string
-      title: IP Address of Reserved External IP (Optional)
-      default: "-"
-      x-google-marketplace:
-        type: STRING
-
-  syn_secret_key:
-    type: string
-    title: Secret key for data encryption (Required)
-    default: ""
-    x-google-marketplace:
-      type: MASKED_FIELD
-
-  syn_license:
-    type: string
-    title: Syntasa License key (Required)
-    default: ""
-    x-google-marketplace:
-      type: STRING
 
   infrastructure_service_account:
       type: string
@@ -105,12 +135,6 @@ properties:
       description: Storage Volume size for frontend/backend/platform services
       default: "20Gi"
       pattern: '^[1-9][0-9]*(\.[0-9]+)?[TGM]i?$'
-
-  whitelist_ips:
-    type: string
-    title: Source Ip Address filter
-    description: Comma separated list of white list ipaddress. Leave it empty if filtering is not required.
-    default: "0.0.0.0/0"
 
   certificate:
     type: string
@@ -399,15 +423,14 @@ properties:
 required:
 - name
 - namespace
+- syn_license
+- syn_secret_key
+- static_ip_address
+- whitelist_ips
 - metastore_connection_name
 - metastore_connection_user
 - metastore_connection_password
-- cluster_name
-- static_ip_address
 - infrastructure_service_account
-- syn_secret_key
-- syn_license
-- whitelist_ips
 - certificate
 
 x-google-marketplace:
