@@ -15,6 +15,8 @@ To install using HELM, please see: [`HELM_INSTALLATION.md`](/docs/HELM_INSTALLAT
 
 To install using MPDEV, please see: [`MPDEV_INSTALLATION.md`](/docs/MPDEV_INSTALLATION.md)
 
+To install using Google Marketplace GKE please navigate to the SYNTASA app in the marketplace and follow the below directions on the configuration screen
+
 ## SYNTASA Google Cloud Marketplace App Configuration Parameters
 
 When configuring the SYNTASA app, you will need to enter the below fields.  Please see the descriptions for the what each
