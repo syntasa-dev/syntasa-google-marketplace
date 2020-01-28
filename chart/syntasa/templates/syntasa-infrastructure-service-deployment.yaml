@@ -22,7 +22,7 @@ spec:
           - echo "Getting Kubernetes Cluster Name";
             export INFRASTRUCTURE_SERVICE_CLUSTER_NAME=$(curl -s http://metadata/computeMetadata/v1/instance/attributes/cluster-name -H 'Metadata-Flavor:Google');
             echo "Found Cluster with Name - ${INFRASTRUCTURE_SERVICE_CLUSTER_NAME}";
-            echo "Finished!"
+            echo "Finished!";
             exec /opt/run;
         name: {{ .Values.container_metadata.syntasa_infrastructure_service.name }}
         imagePullPolicy: {{ .Values.global.image.pullPolicy }}
