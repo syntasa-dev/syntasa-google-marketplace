@@ -11,7 +11,7 @@ form:
 
 
                <h3>SYNTASA Marketplace Configuration Parameters</h3>
-
+               <p>PLEASE MAKE SURE YOUR USER HAS THE KUBERNETES ENGINE ADMIN PERMISSIONS IN THE GOOGLE IAM PAGE</p>
                <p><u><i>Namespace</i></u> - Please select any namespace to use.  e.g. 'syntasa'</p>
                <p><u><i>App Instance Name</i></u> - Name you want to use for the installation. e.g. 'syntasa' </p>
                <p><u><i>License Key</i></u> - License Key provided by SYNTASA</p>
