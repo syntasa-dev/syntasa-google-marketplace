@@ -25,7 +25,7 @@ chmod +x "$BIN_FILE"
 
 ### Verify Installation of the Google Marketplace Toolkit
 
-Run the following to diagonose and correctl setup your environment:
+Run the following to diagnose and validate setup your environment:
 ```
 mpdev /scripts/doctor.py
 ```
