@@ -47,7 +47,8 @@ following document for more information.  [`SYN_LICENSE_INFO.md`](/docs/SYN_LICE
 
 **IP Address of Reserved External IP**
 
-> If you wish to use your own External IP Address, please provide the IP address here (such as a GKE reserved external static IP)
+> If you wish to use your own External IP Address, please provide the IP address here (such as a GKE reserved external static IP), for
+more information about how to setup a external IP, please see the documentation located here: [`Prerequisites - External Static IP Reservation`](https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/PREREQUISITES.md#google-cloud-service-account)
 
 **Source IP Address Filter**
 
@@ -59,7 +60,7 @@ list, e.g. 10.10.0.1/32,10.10.1.1/32.
 **External Metastore Connection Name**
 
 > SYNTASA uses an External Cloud SQL metastore to store state information about the platform.  It is recommended to have this
-in an external Cloud SQL instance as documented in the prerequisite documentation located here: [`PREREQUISITES.md`](/docs/PREREQUISITES.md)
+in an external Cloud SQL instance as documented in the prerequisite documentation located here: [`Prerequisites - External Metastore`](https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/PREREQUISITES.md#external-metastore)
 
 **External Metastore Connection Username**
 
@@ -72,7 +73,7 @@ in an external Cloud SQL instance as documented in the prerequisite documentatio
 **GCP IAM Role for Infrastructure Services**
 
 > SYNTASA requires a GCP IAM role to be present when creating the Application.  This IAM role will need to be created
-ahead of time in the GCP IAM Console.  Please see the prerequisites document for more information: [`PREREQUISITES.md`](/docs/PREREQUISITES.md)
+ahead of time in the GCP IAM Console.  Please see the prerequisites document for more information: [`Prerequisites - Google Cloud Service Account`](https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/PREREQUISITES.md#google-cloud-service-account)
 
 **Syntasa Service Account Agent**
 
