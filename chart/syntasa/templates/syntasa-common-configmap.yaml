@@ -59,7 +59,6 @@ data:
   syntasa_infrastructure_service_security_group: ""
   syntasa_infrastructure_emrfs_cv_enabled: "false"
   syntasa_infrastructure_emrfs_cv_props: "fs.s3.consistent:true,fs.s3.consistent.metadata.read.capacity:400,fs.s3.consistent.metadata.write.capacity:100"
-  syntasa_infrastructure_cluster_name: "{{ .Values.cluster_name }}"
   syntasa_infrastructure_rundeck_url: "http://{{ .Values.static_ip_address }}/rundeck"
   syntasa_infrastructure_service_account: "{{ .Values.infrastructure_service_account }}"
 
@@ -126,7 +125,6 @@ data:
   syntasa_runtime_service_service_account: "{{ .Values.infrastructure_service_account }}"
   syntasa_runtime_service_use_internal_ip: "false"
   syntasa_runtime_service_emrfs_cv_props: "fs.s3.consistent:true,fs.s3.consistent.metadata.read.capacity:400,fs.s3.consistent.metadata.write.capacity:100"
-  syntasa_runtime_service_cluster_name: "{{ .Values.cluster_name }}"
   syntasa_runtime_service_group_id: "runtime-service-consumer"
   syntasa_runtime_service_kafka_max_interval: "20000"
   syntasa_runtime_service_kafka_poll_interval: "100"

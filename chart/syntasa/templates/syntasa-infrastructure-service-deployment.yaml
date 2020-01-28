@@ -17,6 +17,12 @@ spec:
       serviceAccountName: {{ .Values.syn_kube_service_account }}
       containers:
       - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.syntasa_infrastructure_service.image_name }}:{{ .Values.global.image.tag }}"
+        command: ["/bin/sh", "-c"]
+        args:
+          - echo "Getting Kubernetes Cluster Name";
+            export INFRASTRUCTURE_SERVICE_CLUSTER_NAME=$(curl -s http://metadata/computeMetadata/v1/instance/attributes/cluster-name -H 'Metadata-Flavor:Google');
+            echo "Found Cluster with Name - ${INFRASTRUCTURE_SERVICE_CLUSTER_NAME}";
+            echo "Finished!"
         name: {{ .Values.container_metadata.syntasa_infrastructure_service.name }}
         imagePullPolicy: {{ .Values.global.image.pullPolicy }}
         ports:
@@ -97,11 +103,11 @@ spec:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_infrastructure_emrfs_cv_props
-          - name: INFRASTRUCTURE_SERVICE_CLUSTER_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.global.configMap.name }}
-                key: syntasa_infrastructure_cluster_name
+#          - name: INFRASTRUCTURE_SERVICE_CLUSTER_NAME
+#            valueFrom:
+#              configMapKeyRef:
+#                name: {{ .Values.global.configMap.name }}
+#                key: syntasa_infrastructure_cluster_name
           - name: EXTERNAL_SERVER_URL
             valueFrom:
               configMapKeyRef:

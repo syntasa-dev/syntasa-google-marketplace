@@ -21,6 +21,16 @@ spec:
           secretName: syntasa-key
       containers:
       - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.syntasa_runtime_service.image_name }}:{{ .Values.global.image.tag }}"
+        command: ["/bin/sh", "-c"]
+        args:
+          - echo "Getting Kubernetes Cluster Name";
+            apk add curl;
+            sleep 2;
+            export RUNTIME_SERVICE_CLUSTER_NAME=$(curl -s http://metadata/computeMetadata/v1/instance/attributes/cluster-name -H 'Metadata-Flavor:Google');
+            echo "Found Cluster with Name - ${RUNTIME_SERVICE_CLUSTER_NAME}";
+            echo "Starting Runtime Service";
+            java -jar /opt/syntasa/service/syntasa-runtime-service.jar;
+            echo "Finished!"
         name: {{ .Values.container_metadata.syntasa_runtime_service.name }}
         imagePullPolicy: Always
         env:
@@ -69,11 +79,11 @@ spec:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_postgres_url
-          - name: RUNTIME_SERVICE_CLUSTER_NAME
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.global.configMap.name }}
-                key: syntasa_runtime_service_cluster_name
+#          - name: RUNTIME_SERVICE_CLUSTER_NAME
+#            valueFrom:
+#              configMapKeyRef:
+#                name: {{ .Values.global.configMap.name }}
+#                key: syntasa_runtime_service_cluster_name
           - name: RUNTIME_SERVICE_BROKER_LIST
             valueFrom:
               configMapKeyRef:
