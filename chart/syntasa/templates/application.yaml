@@ -41,12 +41,10 @@ spec:
 
       # Next Steps
       After Deploying the SYNTASA application in Google Marketplace on a GKE cluster, please visit the "Services and Ingresses"
-      page and head towards the IP pointed to by the 'syntasa-ingress' service.  Additionally If you used a static ip,
-      the endpoint should be in the format:
+      page and head towards the IP pointed to by the 'syntasa-ingress' service.  For more information please visit the
+      following document on how to retrieve your SYNTASA application UI:
 
-      https://<your ip>
-
-      Please allow some time for the application to load.
+      https://github.com/syntasa-dev/syntasa-google-marketplace#accessing-the-syntasa-application-ui
 
       # Terms of Service
         - Placeholder for Terms of Service
@@ -58,10 +56,10 @@ spec:
     links:
       - description: SYNTASA Website
         url: "https://www.syntasa.com"
+      - description: SYNTASA Prerequisites
+        url: "https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/PREREQUISITES.md"
       - description: SYNTASA Marketplace Documentation
         url: "https://github.com/syntasa-dev/syntasa-google-marketplace"
-      - description: SYNTASA Prerequisited
-        url: "https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/PREREQUISITES.md"
       - description: SYNTASA HELM On-Prem Deployment
         url: "https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/HELM_INSTALLATION.md"
   selector:

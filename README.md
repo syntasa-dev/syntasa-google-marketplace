@@ -86,6 +86,8 @@ a new storage class.
 The default size of 20Gi is usually sufficient.
 
 
+## Accessing the SYNTASA Application UI
+
 Once you hit the "Deploy button" in the Google Marketplace SYNTASA Applciation, please allow up to 1 minute for all services
 to be deployed and ready.  To access the SYNTASA Application UI, please follow the below guidance:
 
