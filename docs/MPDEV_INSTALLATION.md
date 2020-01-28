@@ -79,9 +79,7 @@ When running the MPDEV installation, the following properties must be set
 	"metastore_connection_name": "postgres_connection_name",
 	"metastore_connection_user": "postgres_user_name",
 	"metastore_connection_password": "postgre_password",
-	"cluster_name": "cluster_name",
 	"static_ip_address": "external_static_ip",
-	"internal_static_ip_address": "internal_static_ip",
 	"syn_secret_key": "syntasa_secret_key",
 	"infrastructure_service_account": "iam_service_account_email",
 	"syn_license": "my_license",
@@ -94,8 +92,17 @@ When running the MPDEV installation, the following properties must be set
 ### Running the MPDEV Installation
 To run the Install type:
 ```
-mpdev install --deployer=$REGISTRY/$APP_NAME/deployer:$DEPLOYER_TAG --parameters='{"metastore_connection_name" : "postgres_connection_name","metastore_connection_user" : "postgres_user_name","metastore_connection_password" : "postgre_password","cluster_name" : "cluster_name","static_ip_address" : "external_static_ip","internal_static_ip_address" : "internal_static_ip","syn_secret_key" : "syntasa_secret_key","infrastructure_service_account" : "iam_service_account_email","syn_license": "my_license","certificate": "{\"private_key\":\"my_key_as_String",\"certificate\":\"my_certificate_as_string"}","namespace": "default","name": "syntasa-application","whitelist_ips": "ips_to_whitelist "}'
-```
+ mpdev install --deployer=$REGISTRY/$APP_NAME/deployer:$DEPLOYER_TAG --parameters='{
+ "metastore_connection_name" : "MY_CLOUDSQL_CONNECTION_NAME",
+ "metastore_connection_user" : "MY_CLOUDSQL_CONNECTION_USER",
+ "metastore_connection_password" : "MY_CLOUDSQL_CONNECTION_PASSWORD",
+ "static_ip_address" : "EXTERNAL_RESERVED_IP",
+ "syn_secret_key" : "SECRET_KEY",
+ "infrastructure_service_account" : "IAM_SERVICE_ACCOUNT_EMAIL",
+ "syn_license": "LICENSE_KEY",
+ "namespace": "YOUR_NAMESPACE",
+ "name": "syntasa-application",
+ "whitelist_ips": "WHITE_LISTED_IP_CIDRS"}'```
 
 
 ### Deploying your changes

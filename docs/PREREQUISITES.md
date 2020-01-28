@@ -91,17 +91,6 @@ If using GCLOUD, you may reserve a Static IP using the following documentation:
 > [Reserving an external static ip using Google Cloud](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address)
 
 
-### Internal Static IP reservation
-SYNTASA requires that a static ip be reserved before being able to run the helm charts in order to support KAFKA services
-
-If using GKE, please reserve an internal IP using the following gcloud command:
-
-```
-gcloud compute addresses create [ADDRESS_NAME] [[ADDRESS_NAME]..] \
-    --region [REGION] --subnet [SUBNETWORK] \
-    --addresses [IP_ADDRESS]
-```
-
 For more information, please see the following documentation:
 
 > [Reserving an internal static ip using Google Cloud](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-internal-ip-address)
@@ -136,5 +125,8 @@ Once the above steps have been completed you should have the following informati
 1. A Kubernetes Cluster created
 2. An External Metastore created
 3. External Static IP (optional)
-4. Internal Static IP (required)
-5. Google Cloud IAM Service Account
+4. Google Cloud IAM Service Account
+
+
+For questions and comments please reach out to info@syntasa.com
+For technical guidance please reach out to support@syntasa.com or devops@syntasa.com
