@@ -2,17 +2,17 @@ applicationApiVersion: v1beta1
 
 form:
 - widget: help
-  description: <h2>Thank you for choosing SYNTASA</h2>
-               <p>Here are some tips to help you get started with SYNTASA on Google Cloud Marketplace</p>
+  description: |-
+               <h2>Thank you for your interest in SYNTASA</h2>
 
-               <p>Before beginning, please visit <a href="https://syntasa.com/gcp-marketplace-license-request">Syntasa License Request</a>
-               To request a Free Trial License for the SYNTASA platform.</p>
+               <p>Before deploying the SYNTASA application from Google Marketplace, you must request a <a href="https://syntasa.com/gcp-marketplace-license-request">Syntasa license key</a> for a free trial.</p>
                <p><b>**This must be done prior to installing SYNTASA in the GCP Marketplace**</b></p>
+               <p>Once requested, SYNTASA representatives will respond with a license key that you can use to deploy along with more detailed instructions</p>
 
-               <p>Please see the following guide for more information on how to fill out the SYNTASA Google Marketplace Configuration Parameters</p>
-               <p><a href="https://github.com/syntasa-dev/syntasa-google-marketplace#syntasa-google-cloud-marketplace-app-configuration-parameters">Syntasa Marketplace Documentation</a></p>
+               <p>For more information about the SYNTASA Google Marketplace Configuration Parameters on the left, please visit the following guide:</p>
+               <p><a href="https://github.com/syntasa-dev/syntasa-google-marketplace#syntasa-google-cloud-marketplace-app-configuration-parameters">Syntasa Marketplace Installation and Configuration Documentation</a></p>
 
-               <p>For any additional support please contact -- support@syntasa.com</p>
+               <p>For any additional support please visit: <a href="https://help.syntasa.com">help.syntasa.com</a></p>
 
 properties:
   name:

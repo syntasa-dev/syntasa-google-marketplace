@@ -47,7 +47,8 @@ spec:
       https://github.com/syntasa-dev/syntasa-google-marketplace#accessing-the-syntasa-application-ui
 
       # Terms of Service
-      Please refer to the SYNTASA licensing agreement
+      Please refer to the SYNTASA licensing agreement located here:
+      https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/LICENSE
 
       # Support
       For support please reach out to support@syntasa.com
@@ -62,6 +63,8 @@ spec:
         url: "https://github.com/syntasa-dev/syntasa-google-marketplace"
       - description: SYNTASA HELM On-Prem Deployment
         url: "https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/HELM_INSTALLATION.md"
+      - description: SYNTASA Licensing Agreement
+        url: "https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/LICENSE"
   selector:
     matchLabels:
       app.kubernetes.io/name: "{{ .Release.Name }}"
