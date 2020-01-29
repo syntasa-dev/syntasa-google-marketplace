@@ -1,6 +1,6 @@
 # Syntasa Corporation Trial Agreement
 
-###General Terms
+General Terms
 
 1.  Right to Use
     Subject to the terms and conditions of this Agreement, Syntasa grants Customer a non-exclusive, non-transferable license to use the
