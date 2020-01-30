@@ -20,7 +20,7 @@ spec:
         secret:
           secretName: syntasa-key
       containers:
-      - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.syntasa_data_gateway_service.image_name }}:{{ .Values.global.image.tag }}"
+      - image: "{{ .Values.syntasaDataGatewayServiceImage }}"
         name: {{ .Values.container_metadata.syntasa_data_gateway_service.name }}
         imagePullPolicy: Always
         ports:

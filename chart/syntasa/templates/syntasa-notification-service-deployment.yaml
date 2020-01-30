@@ -1,51 +1,46 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.container_metadata.syntasa_event_engine_service.name }}
+  name: {{ .Values.container_metadata.syntasa_notification_service.name }}
   namespace: {{ .Release.Namespace }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.container_metadata.syntasa_event_engine_service.name }}
+      app: {{ .Values.container_metadata.syntasa_notification_service.name }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: {{ .Values.container_metadata.syntasa_event_engine_service.name }}
+        app: {{ .Values.container_metadata.syntasa_notification_service.name }}
     spec:
       containers:
-      - image: "{{ .Values.syntasaEventEngineServiceImage }}"
-        name: {{ .Values.container_metadata.syntasa_event_engine_service.name }}
+      - image: "{{ .Values.syntasaNotificationServiceImage }}"
+        name: {{ .Values.container_metadata.syntasa_notification_service.name }}
         imagePullPolicy: Always
         env:
-          - name: EVENT_ENGINE_SERVICE_USERNAME
+          - name: NOTIFICATION_SERVICE_USERNAME
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_postgres_username
-          - name: EVENT_ENGINE_SERVICE_PASSWORD
+          - name: NOTIFICATION_SERVICE_PASSWORD
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_postgres_password
-          - name: EVENT_ENGINE_SERVICE_DATABASE_URL
+          - name: NOTIFICATION_SERVICE_PERSISTENCE_URL
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_postgres_url
-          - name: EVENT_ENGINE_SERVICE_KAFKA_BROKER
+          - name: NOTIFICATION_SERVICE_BROKER_LIST
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_kafka_service_url
-          - name: EVENT_ENGINE_SERVICE_GROUP_ID
-            valueFrom:
-              configMapKeyRef:
-                name: {{ .Values.global.configMap.name }}
-                key: syntasa_event_engine_service_group_id
         ports:
-        - containerPort: {{ .Values.container_metadata.syntasa_event_engine_service.container_port | int }}
-          name: evnt-eng-svc-pt
+        - containerPort:  {{ .Values.container_metadata.syntasa_notification_service.container_port | int }}
+          name: notify-svc-prt
       imagePullSecrets:
       - name: {{.Values.global.imagePullSecret.name }}

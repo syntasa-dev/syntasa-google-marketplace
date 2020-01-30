@@ -15,7 +15,7 @@ spec:
         app: {{ .Values.container_metadata.sql_proxy.name }}
     spec:
       containers:
-        - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.sql_proxy.image_name }}:{{ .Values.global.image.tag }}"
+        - image: "{{ .Values.sqlProxyImage }}"
           name: {{ .Values.container_metadata.sql_proxy.service_name }}
           imagePullPolicy: Always
           command: ["/cloud_sql_proxy","-instances=$(CLOUD_POSTGRES_INSTANCE_NAME)=tcp:0.0.0.0:5432"]

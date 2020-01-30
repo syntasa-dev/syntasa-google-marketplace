@@ -15,7 +15,7 @@ spec:
         app: {{ .Values.container_metadata.syntasa_auth_service.name }}
     spec:
       containers:
-      - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.syntasa_auth_service.image_name }}:{{ .Values.global.image.tag }}"
+      - image: "{{ .Values.syntasaAuthServiceImage }}"
         name: syntasa-auth-service
         imagePullPolicy: Always
         env:

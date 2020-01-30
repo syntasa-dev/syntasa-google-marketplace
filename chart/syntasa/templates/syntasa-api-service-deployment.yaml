@@ -15,7 +15,7 @@ spec:
         app: {{ .Values.container_metadata.syntasa_api_service.name }}
     spec:
       containers:
-      - image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.syntasa_api_service.image_name }}:{{ .Values.global.image.tag }}"
+      - image: "{{ .Values.syntasaApiServiceImage }}"
         name: syntasa-api-service
         imagePullPolicy: Always
         env: 
