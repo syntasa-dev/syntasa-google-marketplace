@@ -18,7 +18,7 @@ spec:
       serviceAccountName: {{ .Values.syn_kube_service_account }}
       containers:
         - name: {{ .Values.container_metadata.ingress.name }}
-          image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.ingress.image_name }}:{{ .Values.global.image.tag }}"
+          image: "{{ .Values.ingressImage }}"
           imagePullPolicy: Always
           args:
             - --default-backend-service=$(POD_NAMESPACE)/ingress-default-backend

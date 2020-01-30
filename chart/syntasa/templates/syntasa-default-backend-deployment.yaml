@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: {{ .Values.container_metadata.default_backend.name }}
-          image: "{{ .Values.global.image.repository }}/{{ .Values.container_metadata.default_backend.image_name }}:{{ .Values.global.image.tag }}"
+          image: "{{ .Values.defaultBackendImage }}"
           imagePullPolicy: {{ .Values.global.image.pullPolicy }}
           ports:
           - containerPort: 8080

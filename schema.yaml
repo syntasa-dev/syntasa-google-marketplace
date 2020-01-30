@@ -44,7 +44,7 @@ properties:
   static_ip_address:
       type: string
       title: IP Address of Reserved External IP (Optional)
-      default: "-"
+      default: ""
       x-google-marketplace:
         type: STRING
 
