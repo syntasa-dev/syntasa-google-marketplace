@@ -1,4 +1,4 @@
-# GOOGLE Marketplace Pre-setup
+# SYNTASA Google Marketplace Deployment
 
 For a successful deployment from the Google Cloud Console Marketplace, please follow the following steps befor attempting
 to install from the Marketplace.

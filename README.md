@@ -9,7 +9,7 @@ Before Beginning, please obtain a license for SYNTASA, for more information plea
 
 > [SYNTASA licensing information](/docs/SYN_LICENSE_INFO.md)
 
-To install using GOOGLE CLOUD MARKETPLACE, please see: [`MARKETPLACE PRE-SETUP`](/docs/MARKEPLACE_PREREQUISITES.md)
+To install using GOOGLE CLOUD MARKETPLACE, please see: [`MARKETPLACE DEPLOYMENT`](/docs/MARKETPLACE_DEPLOYMENT.md)
 
 ---
 
