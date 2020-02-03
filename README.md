@@ -1,7 +1,6 @@
 # SYNTASA Customer Intelligence Platform for Google Marketplace
-This Repository contains the SYNTASA Google Marketplace deployment scripts using HELM and the GOOGLE development toolkit located here:
 
-[Google Cloud Marketplace](https://github.com/GoogleCloudPlatform/marketplace-k8s-app-tools)
+This repository contains all the information for the SYNTASA Google Marketplace Solution.
 
 ## Installing the SYNTASA microservice stack
 
@@ -14,6 +13,10 @@ To install using GOOGLE CLOUD MARKETPLACE, please see: [`MARKETPLACE DEPLOYMENT`
 ---
 
 **Alternative Installation Methods**
+
+The GOOGLE development toolkit used for the advanced installation steps is located here:
+
+[Google Cloud Marketplace](https://github.com/GoogleCloudPlatform/marketplace-k8s-app-tools)
 
 Please note that while HELM installations allow the use of RBAC and Service Accounts, the Google Marketplace Installation does not, hence there are two pathways to a successful SYNTASA install.
 
