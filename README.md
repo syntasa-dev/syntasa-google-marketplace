@@ -9,12 +9,13 @@ Before Beginning, please obtain a license for SYNTASA, for more information plea
 
 > [SYNTASA licensing information](/docs/SYN_LICENSE_INFO.md)
 
-Please note that while HELM installations allow the use of RBAC and Service Accounts, the Google Marketplace Installation does not, hence there are two pathways to a successful SYNTASA install.
-
 To install using GOOGLE CLOUD MARKETPLACE, please see: [`MARKETPLACE PRE-SETUP`](/docs/MARKEPLACE_PREREQUISITES.md)
 
+---
 
 **Alternative Installation Methods**
+
+Please note that while HELM installations allow the use of RBAC and Service Accounts, the Google Marketplace Installation does not, hence there are two pathways to a successful SYNTASA install.
 
 To install using HELM, please see: [`HELM_INSTALLATION`](/docs/HELM_INSTALLATION.md)
 

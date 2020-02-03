@@ -10,7 +10,7 @@ form:
                <p>Once requested, SYNTASA representatives will respond with a license key that you can use to deploy along with more detailed instructions</p>
 
                <p>For more information about the SYNTASA Google Marketplace Configuration Parameters on the left, please visit the following guide:</p>
-               
+
                ```
                <a href="https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/MARKETPLACE_CONFIG_OPTIONS.md#syntasa-google-cloud-marketplace-configuration-options">Syntasa Marketplace Installation and Configuration Documentation</a>
                ```
