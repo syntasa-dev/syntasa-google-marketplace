@@ -8,6 +8,7 @@ to install from the Marketplace.
 ### Obtaining a license
 
 Please see the following document to obtain a license for the SYNTASA platform.
+[`SYNTASA License Information`](SYN_LICENSE_INFO.md)
 
 ### Enabling API's
 
@@ -21,8 +22,6 @@ To use all the services required by the SYNTASA application, please enable a few
 6. In the search bar, please search for the 'Kubernetes Engine API'
 7. Click 'Enable'
 8. Repeat Steps 5 through 7 for 'Cloud SQL Admin'
-
-[`SYNTASA License Information`](SYN_LICENSE_INFO.md)
 
 ### Create an IAM Account
 
@@ -66,7 +65,6 @@ To continue adding roles, click on 'Add Another Role' and continue until all rol
 ```$xslt
 'syntasa-application-serviceacc@<my_project>.iam.gserviceaccount.com'
 ```
-
 
 ### Create an External Metastore
 
