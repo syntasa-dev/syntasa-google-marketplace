@@ -66,20 +66,20 @@ To continue adding roles, click on 'Add Another Role' and continue until all rol
 'syntasa-application-serviceacc@<my_project>.iam.gserviceaccount.com'
 ```
 
-### Create an External Metastore
+### Create an External Cloud SQL
 
-SYNTASA uses an external Metastore to save metadata and state information, please create one using the steps below.
+SYNTASA uses an external Cloud SQL to save metadata and state information, please create one using the steps below.
 
 1. Click the hamburger icon on the left and navigate to the 'SQL' tab
 2. Click on 'Create Instance' on the top menu bar
 3. On the next screen, pick a Database Type, please pick 'Choose PostgreSQL'
 4. Fill in the following fields
 
-> Instance ID - Please choose a name for the metastore e.g. 'syntasa-metastore-pg'
+> Instance ID - Please choose a name for the Instance e.g. 'syntasa-metadata-db'
 
 > Default User Password - Please pick a password that is sufficiently complex e.g. 'mySup3erP@$$'
 
-> Location - Please pick a Region and Zone for your Metastore to be hosted in.  Please note that it is very important to pick a region and zone that will be the same region as the Kubernetes cluster you will create later.
+> Location - Please pick a Region and Zone for your instance to be hosted in.  Please note that it is very important to pick a region and zone that will be the same region as the Kubernetes cluster you will create later.
 
 > Database Version - Please pick PostgreSQL 9.6
 
@@ -95,6 +95,7 @@ SYNTASA uses an external Metastore to save metadata and state information, pleas
 ```
     <my_project>:<my_region>:syntasa-metastore-pg
 ```
+14. Click on the created instance, go to Databases, create new database and name it as 'syntasa'.
 
 ### Reserve a Static External IP
 
@@ -123,7 +124,7 @@ Although a Static IP is not required, it is highly preferred to use a static ip.
 
 ### Creating a Kubernetes Cluster
 
-In order to deploy the SYNTASA application from the Google Cloud Marketplace, we will need to create a cluste first.
+In order to deploy the SYNTASA application from the Google Cloud Marketplace, we will need to create a kubernetes cluster first.
 
 1. Click the hamburger icon on the top left and click on 'Kubernetes Engine'
 2. On the Clusters tab, click the 'Create Cluster' button
