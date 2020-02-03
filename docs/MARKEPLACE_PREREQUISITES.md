@@ -5,6 +5,12 @@ to install from the Marketplace.
 
 > Before beginning, please make sure you have at least Project Editor access to the Project in which you wish to install the SYNTASA application from the marketplace.  If you are unsure about your accesses, please contact your Cloud Devops or IT administrator.
 
+### Obtaining a license
+
+Please see the following document to obtain a license for the SYNTASA platform.
+
+[`SYNTASA License Information`](SYN_LICENSE_INFO.md)
+
 ### Create an IAM Account
 
 In order to ensure the Kubernetes cluster we create has the correct permissions, please create a IAM Service Account
@@ -138,6 +144,6 @@ Once all the steps above are complete, we can head to the Google Marketplace to 
 5. Under the Cluster option, please make sure the cluster we created above is selected.
 6. Please follow the steps located here for a field descriptions.
 
-[SYNTASA Configuration Screen Options](https://github.com/syntasa-dev/syntasa-google-marketplace#syntasa-google-cloud-marketplace-app-configuration-parameters)
+[`SYNTASA Marketplace Configuration Options`](MARKETPLACE_CONFIG_OPTIONS.md)
 
 For any further questions or help, please contact info@syntasa.com or help@syntasa.com
