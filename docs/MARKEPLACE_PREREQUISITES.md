@@ -24,14 +24,23 @@ To Add a role, click on the 'Select role' field and type one of the following ro
 To continue adding roles, click on 'Add Another Role' and continue until all roles have been added.
 
 > BigQuery Admin
+
 > Cloud SQL Admin
+
 > Compute Admin
+
 > Kubernetes Engine Cluster Admin
+
 > Kubernetes Engine Developer
+
 > Kubernetes Engine Service Agent
+
 > Dataproc Administrator
+
 > Dataproc Worker
+
 > Service Account User
+
 > Storage Admin
 
 10. Once all roles have been added, click the 'Continue' button
@@ -53,8 +62,11 @@ SYNTASA uses an external Metastore to save metadata and state information, pleas
 4. Fill in the following fields
 
 > Instance ID - Please choose a name for the metastore e.g. 'syntasa-metastore-pg'
+
 > Default User Password - Please pick a password that is sufficiently complex e.g. 'mySup3erP@$$'
+
 > Location - Please pick a Region and Zone for your Metastore to be hosted in.  Please note that it is very important to pick a region and zone that will be the same region as the Kubernetes cluster you will create later.
+
 > Database Version - Please pick PostgreSQL 9.6
 
 5. Once filled out, please click the 'show configuration options' link on the bottom of the page
@@ -80,11 +92,17 @@ Although a Static IP is not required, it is highly preferred to use a static ip.
 4. On the 'Reserve Static address' screen, please fill in the following fields
 
 > Name - Please pick any name, e.g. 'syntasa-application-static-ip'
+
 > Description - Please fill in a short description e.g. 'Reservation for Syntasa Application'
+
 > Network Service Tier - Pleasee select Premium
+
 > IP Version - Please select IPv4
+
 > Type - Please select Regional
+
 > Region - Please select a region that is in line with the metastore region you selected above.
+
 > Attaced To - Please leave as default 'None'
 
 5. Once filled in, please click the 'Reserve' button and take note of the Name you provided for the Static IP Name.
