@@ -9,22 +9,32 @@ to install from the Marketplace.
 
 Please see the following document to obtain a license for the SYNTASA platform.
 
+### Enabling API's
+
+To use all the services required by the SYNTASA application, please enable a few of the API's to get started.
+
+1. Launch the Google Cloud Console - [GCP Console]()https://console.cloud.google.com/)
+2. Make sure you're logged into the console with the correct credentials (to change, click the profile icon on the top right of the screen)
+3. Navigate to the correct project by clicking on the project drop-down menu in the top bar (next to the text that says 'Google Cloud Platform')
+4. Using the hamburger icon on the top left of the console, navigate to the 'APIs & Services' tab
+5. Click the 'Enable APIs and Services' button on the top bar
+6. In the search bar, please search for the 'Kubernetes Engine API'
+7. Click 'Enable'
+8. Repeat Steps 5 through 7 for 'Cloud SQL Admin'
+
 [`SYNTASA License Information`](SYN_LICENSE_INFO.md)
 
 ### Create an IAM Account
 
 In order to ensure the Kubernetes cluster we create has the correct permissions, please create a IAM Service Account
 
-1. Launch the Google Cloud Console - [GCP Console]()https://console.cloud.google.com/)
-2. Make sure you're logged into the console with the correct credentials (to change, click the profile icon on the top right of the screen)
-3. Navigate to the correct project by clicking on the project drop-down menu in the top bar (next to the text that says 'Google Cloud Platform')
-3. Using the Hamburger icon on the top left of the Console, navigate to the 'IAM & Admin' page.
-4. Click on 'Service Accounts' tab
-5. Click the 'Create Service Account' button on the top menu bar
-6. Fill in the 'Service Account Name' field with a name of your choice, e.g. 'syntasa-application-serviceacc'
-7. Fill in the 'Service Account Description' field with a descripton of your choice, e.g. 'Service Account for SYNTASA Deployment'
-8. Click the 'Create' button at the bottom to continue to the next page.
-9. On the 'Service Account Permissions' page please add the following roles to the service account
+1. Using the Hamburger icon on the top left of the Console, navigate to the 'IAM & Admin' page.
+2. Click on 'Service Accounts' tab
+3. Click the 'Create Service Account' button on the top menu bar
+4. Fill in the 'Service Account Name' field with a name of your choice, e.g. 'syntasa-application-serviceacc'
+5. Fill in the 'Service Account Description' field with a descripton of your choice, e.g. 'Service Account for SYNTASA Deployment'
+6. Click the 'Create' button at the bottom to continue to the next page.
+7. On the 'Service Account Permissions' page please add the following roles to the service account
 
 To Add a role, click on the 'Select role' field and type one of the following roles into the search box that appears.
 To continue adding roles, click on 'Add Another Role' and continue until all roles have been added.
@@ -49,10 +59,10 @@ To continue adding roles, click on 'Add Another Role' and continue until all rol
 
 > Storage Admin
 
-10. Once all roles have been added, click the 'Continue' button
-11. Leave the 'Service Account users role' and 'Service account admins role' blank.
-12. (OPTIONAL) if you wish to create a JSON key, please click the 'Create Key' button
-13. Click the 'Done' button and note down the email address of your service account (you will need this when creating the kubernetes cluster later).  The email will look something like this: 
+8. Once all roles have been added, click the 'Continue' button
+9. Leave the 'Service Account users role' and 'Service account admins role' blank.
+10. (OPTIONAL) if you wish to create a JSON key, please click the 'Create Key' button
+11. Click the 'Done' button and note down the email address of your service account (you will need this when creating the kubernetes cluster later).  The email will look something like this: 
 ```$xslt
 'syntasa-application-serviceacc@<my_project>.iam.gserviceaccount.com'
 ```
