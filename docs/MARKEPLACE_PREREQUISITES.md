@@ -1,4 +1,4 @@
-# GOOGLE Marketplace Pre-Requisites
+# GOOGLE Marketplace Pre-setup
 
 For a successful deployment from the Google Cloud Console Marketplace, please follow the following steps befor attempting
 to install from the Marketplace.
@@ -135,7 +135,8 @@ Once all the steps above are complete, we can head to the Google Marketplace to 
 2. In the search box that appears, please type 'syntasa' and hit enter.
 3. Select the SYNTASA application in the result list.
 4. Click the 'Configure' Icon
-5. Please follow the steps located here for a field descriptions.
+5. Under the Cluster option, please make sure the cluster we created above is selected.
+6. Please follow the steps located here for a field descriptions.
 
 [SYNTASA Configuration Screen Options](https://github.com/syntasa-dev/syntasa-google-marketplace#syntasa-google-cloud-marketplace-app-configuration-parameters)
 
