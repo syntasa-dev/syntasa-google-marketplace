@@ -5,7 +5,7 @@ form:
   description: |-
                <h2>Thank you for your interest in SYNTASA</h2>
 
-               <p>Before deploying the SYNTASA application from Google Marketplace, you must request a <a href="https://syntasa.com/gcp-marketplace-license-request">Syntasa license key</a> for a free trial.</p>
+               <p>Before deploying the SYNTASA application from Google Marketplace, you must request a <a href="https://syntasa.com/form/gcp-marketplace-license-request">Syntasa license key</a> for a free trial.</p>
                <p><b>**This must be done prior to installing SYNTASA in the GCP Marketplace**</b></p>
                <p>Once requested, SYNTASA representatives will respond with a license key that you can use to deploy along with more detailed instructions</p>
 
