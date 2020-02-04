@@ -21,7 +21,8 @@ To use all the services required by the SYNTASA application, please enable a few
 5. Click the 'Enable APIs and Services' button on the top bar
 6. In the search bar, please search for the 'Kubernetes Engine API'
 7. Click 'Enable'
-8. Repeat Steps 5 through 7 for 'Cloud SQL Admin'
+8. Repeat Steps 5 through 7 for 'Cloud SQL Admin API'
+9. Repeat Steps 5 through 7 for 'Cloud Dataproc API'
 
 ### Create an IAM Account
 
@@ -132,8 +133,8 @@ In order to deploy the SYNTASA application from the Google Cloud Marketplace, we
 4. In the Name field, please type a name for your cluster e.g. 'syntasa-app-cluster'
 5. In the Zone field, please select the Zone that corresponds to the region and zone you selected for the metastore above.
 6. For the 'Master Version' please leave as default.
-7. For Number of Nodes (under node-pools), please select 3
-8. For Machine type, please select n1-highmem-4
+7. For Number of Nodes (under node-pools), please select 3 (recommeneded)
+8. For Machine type, please select n1-highmem-4 (recommended)
 9. Click the 'More Options' button under the node-pools section
 10. Under Security -- Service Account, please select the service account we created above in the service accounts section.
 11. Under 'Management' please uncheck the 'Enable auto-upgrade' option.
