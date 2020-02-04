@@ -81,7 +81,7 @@ data:
   syntasa_auth_service_oauth2_client_user_info: "https://www.googleapis.com/userinfo/v2/me"
   syntasa_auth_service_oauth2_client_prefer_token_info: "false"
   syntasa_auth_service_oauth2_client_refresh_token_uri: "https://accounts.google.com/o/oauth2/token"
-  syntasa_auth_service_app_database_url: "jdbc:postgresql://{{ .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}..svc.cluster.local:5432/sma_platform"
+  syntasa_auth_service_app_database_url: "jdbc:postgresql://{{ .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:5432/sma_platform"
   syntasa_auth_service_oauth2_client_host_domain: "syntasa.com"
   syntasa_auth_service_license: {{ .Values.syn_license }}
 
