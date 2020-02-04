@@ -119,7 +119,7 @@ data:
   syntasa_job_management_service_notification_enable: 'false'
   syntasa_job_management_service_external_hostname: "{{ .Values.static_ip_address }}"
 
-  syntasa_runtime_service_encryption_enable: "false"
+  syntasa_runtime_service_encryption_enable: "true"
   syntasa_runtime_service_config_location: "/opt/syntasa/lib/config"
   syntasa_runtime_service_hostname: "http://{{ .Values.static_ip_address }}"
   syntasa_runtime_service_service_account: "{{ .Values.infrastructure_service_account }}"
