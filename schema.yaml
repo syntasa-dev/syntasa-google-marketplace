@@ -11,14 +11,11 @@ form:
 
                <p>For more information about the SYNTASA Google Marketplace Configuration Parameters on the left, please visit the following guide:</p>
 
-               ```
                <a href="https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/MARKETPLACE_CONFIG_OPTIONS.md#syntasa-google-cloud-marketplace-configuration-options">Syntasa Marketplace Installation and Configuration Documentation</a>
-               ```
+
                <p>For more information about the SYNTASA solution please visiting the following github repo:</p>
 
-               ```
                <a href="https://github.com/syntasa-dev/syntasa-google-marketplace#syntasa-customer-intelligence-platform-for-google-marketplace">Syntasa Marketplace Installation and Configuration Documentation</a></p>
-               ```
 
                <p>For any additional support please visit: <a href="https://help.syntasa.com">help.syntasa.com</a></p>
 
@@ -416,7 +413,6 @@ required:
 - namespace
 - syn_license
 - syn_secret_key
-- static_ip_address
 - whitelist_ips
 - metastore_connection_name
 - metastore_connection_user
