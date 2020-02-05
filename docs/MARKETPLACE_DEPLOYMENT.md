@@ -70,7 +70,7 @@ SYNTASA uses an external Cloud SQL to save metadata and state information, pleas
 4. Fill in the following fields
 
 | Field Name            | Field Value                                                                                                                                                                                                   |
-|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|:-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Instance Id           | A name for the Instance e.g. 'syntasa-metadata-db'                                                                                                                                                            |
 | Default User Password | Pick a password that is sufficiently complex e.g. 'mySup3rP@$$'                                                                                                                                               |
 | Location              | Pick a Region and Zone for your instance to be hosted in.<br/>  Please note that it is very important to pick a region and zone that will be the same region as the Kubernetes cluster you will create later. |
@@ -102,7 +102,7 @@ Although a Static IP is not required, it is highly preferred to use a static ip.
 4. On the 'Reserve Static address' screen, please fill in the following fields
 
 | Field Name           | Values                                                                       |
-|----------------------|------------------------------------------------------------------------------|
+|:----------------------|------------------------------------------------------------------------------|
 | Name                 | Name for the entry, e.g. 'syntasa-application-static-ip                      |
 | Description          | Short description e.g. 'Reservation for Syntasa Application'                 |
 | Network Service Tier | Select Premium                                                               |
