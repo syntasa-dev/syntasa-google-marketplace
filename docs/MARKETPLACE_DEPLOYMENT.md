@@ -5,10 +5,13 @@ to install from the Marketplace.
 
 `Before beginning, please make sure you have at least Project Editor access to the Project in which you wish to install the SYNTASA application from the marketplace.  If you are unsure about your accesses, please contact your Cloud Devops or IT administrator.`
 
+---
 ### Obtaining a license
 
 Please see the following document to obtain a license for the SYNTASA platform.
 [`SYNTASA License Information`](SYN_LICENSE_INFO.md)
+
+---
 
 ### Enabling API's
 
@@ -23,6 +26,8 @@ To use all the services required by the SYNTASA application, please enable a few
 7. Click 'Enable'
 8. Repeat Steps 5 through 7 for 'Cloud SQL Admin API'
 9. Repeat Steps 5 through 7 for 'Cloud Dataproc API'
+
+---
 
 ### Create an IAM Account
 
@@ -50,10 +55,11 @@ In order to ensure the Kubernetes cluster we create has the correct permissions,
 9. Leave the 'Service Account users role' and 'Service account admins role' blank.
 10. (OPTIONAL) if you wish to create a JSON key, please click the 'Create Key' button
 11. Click the 'Done' button and note down the email address of your service account (you will need this when creating the kubernetes cluster later).  The email will look something like this: 
-    ```
-    syntasa-application-serviceacc@<my_project>.iam.gserviceaccount.com
-    ```
+   
+   `syntasa-application-serviceacc@<my_project>.iam.gserviceaccount.com`
 
+---
+   
 ### Create an External Cloud SQL
 
 SYNTASA uses an external Cloud SQL to save metadata and state information, please create one using the steps below.
@@ -84,6 +90,8 @@ SYNTASA uses an external Cloud SQL to save metadata and state information, pleas
     ```
 14. Click on the created instance, go to Databases, create new database and name it as 'syntasa'.
 
+---
+
 ### Reserve a Static External IP
 
 Although a Static IP is not required, it is highly preferred to use a static ip.  Please follow the steps below to create an external static ip reservation.
@@ -105,6 +113,8 @@ Although a Static IP is not required, it is highly preferred to use a static ip.
 
  Once all fields are filled in, please click the 'Reserve' button and take note of the Name you provided for the Static IP Name.
 
+---
+
 ### Creating a Kubernetes Cluster
 
 In order to deploy the SYNTASA application from the Google Cloud Marketplace, we will need to create a kubernetes cluster first.
@@ -124,6 +134,7 @@ In order to deploy the SYNTASA application from the Google Cloud Marketplace, we
 13. Click 'Create'
 14. Cluster creation will take somewhere between 5-10 minutes.
 
+---
 
 ### Deploying the SYNTASA application
 
