@@ -3,7 +3,7 @@
 For a successful deployment from the Google Cloud Console Marketplace, please follow the following steps befor attempting
 to install from the Marketplace.
 
-> Before beginning, please make sure you have at least Project Editor access to the Project in which you wish to install the SYNTASA application from the marketplace.  If you are unsure about your accesses, please contact your Cloud Devops or IT administrator.
+`Before beginning, please make sure you have at least Project Editor access to the Project in which you wish to install the SYNTASA application from the marketplace.  If you are unsure about your accesses, please contact your Cloud Devops or IT administrator.`
 
 ### Obtaining a license
 
@@ -14,7 +14,7 @@ Please see the following document to obtain a license for the SYNTASA platform.
 
 To use all the services required by the SYNTASA application, please enable a few of the API's to get started.
 
-1. Launch the Google Cloud Console - [GCP Console]()https://console.cloud.google.com/)
+1. Launch the Google Cloud Console - [GCP Console](https://console.cloud.google.com/)
 2. Make sure you're logged into the console with the correct credentials (to change, click the profile icon on the top right of the screen)
 3. Navigate to the correct project by clicking on the project drop-down menu in the top bar (next to the text that says 'Google Cloud Platform')
 4. Using the hamburger icon on the top left of the console, navigate to the 'APIs & Services' tab
@@ -34,36 +34,23 @@ In order to ensure the Kubernetes cluster we create has the correct permissions,
 4. Fill in the 'Service Account Name' field with a name of your choice, e.g. 'syntasa-application-serviceacc'
 5. Fill in the 'Service Account Description' field with a descripton of your choice, e.g. 'Service Account for SYNTASA Deployment'
 6. Click the 'Create' button at the bottom to continue to the next page.
-7. On the 'Service Account Permissions' page please add the following roles to the service account
-
-To Add a role, click on the 'Select role' field and type one of the following roles into the search box that appears.
-To continue adding roles, click on 'Add Another Role' and continue until all roles have been added.
-
-> BigQuery Admin
-
-> Cloud SQL Admin
-
-> Compute Admin
-
-> Kubernetes Engine Cluster Admin
-
-> Kubernetes Engine Developer
-
-> Kubernetes Engine Service Agent
-
-> Dataproc Administrator
-
-> Dataproc Worker
-
-> Service Account User
-
-> Storage Admin
-
+7. On the 'Service Account Permissions' page please add the following roles to the service account<br><br>
+    To Add a role, click on the 'Select role' field and type one of the following roles into the search box that   appears. To continue adding roles, click on 'Add Another Role' and continue until all roles have been added.<br><br>
+    * `BigQuery Admin`
+    * `Cloud SQL Admin`
+    * `Compute Admin`
+    * `Kubernetes Engine Cluster Admin`
+    * `Kubernetes Engine Developer`
+    * `Kubernetes Engine Service Agent`
+    * `Dataprc Administrator`
+    * `Dataproc Worker`
+    * `Service Account User`
+    * `Storage Admin`<br><br>
 8. Once all roles have been added, click the 'Continue' button
 9. Leave the 'Service Account users role' and 'Service account admins role' blank.
 10. (OPTIONAL) if you wish to create a JSON key, please click the 'Create Key' button
 11. Click the 'Done' button and note down the email address of your service account (you will need this when creating the kubernetes cluster later).  The email will look something like this: 
-```$xslt
+```
 'syntasa-application-serviceacc@<my_project>.iam.gserviceaccount.com'
 ```
 
@@ -107,21 +94,17 @@ Although a Static IP is not required, it is highly preferred to use a static ip.
 3. Click the 'Reserve Static Address' button on the top toolbar menu
 4. On the 'Reserve Static address' screen, please fill in the following fields
 
-> Name - Please pick any name, e.g. 'syntasa-application-static-ip'
+| Field Name      | Values |
+| --------- :| -----|
+| Name  | Name for the entry, e.g. 'syntasa-application-static-ip |
+| Description |  Short description e.g. 'Reservation for Syntasa Application' |
+| Network Service Tier | Select Premium |
+| IP Version | Select IPv4 |
+| Type | Select Regional |
+| Region | Select a region that is in line with the metastore region you selected above |
+| Attached To | Leave as default 'None' |
 
-> Description - Please fill in a short description e.g. 'Reservation for Syntasa Application'
-
-> Network Service Tier - Pleasee select Premium
-
-> IP Version - Please select IPv4
-
-> Type - Please select Regional
-
-> Region - Please select a region that is in line with the metastore region you selected above.
-
-> Attaced To - Please leave as default 'None'
-
-5. Once filled in, please click the 'Reserve' button and take note of the Name you provided for the Static IP Name.
+ Once all fields are filled in, please click the 'Reserve' button and take note of the Name you provided for the Static IP Name.
 
 ### Creating a Kubernetes Cluster
 
