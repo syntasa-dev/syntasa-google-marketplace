@@ -50,9 +50,9 @@ In order to ensure the Kubernetes cluster we create has the correct permissions,
 9. Leave the 'Service Account users role' and 'Service account admins role' blank.
 10. (OPTIONAL) if you wish to create a JSON key, please click the 'Create Key' button
 11. Click the 'Done' button and note down the email address of your service account (you will need this when creating the kubernetes cluster later).  The email will look something like this: 
-```
-'syntasa-application-serviceacc@<my_project>.iam.gserviceaccount.com'
-```
+    ```
+    syntasa-application-serviceacc@<my_project>.iam.gserviceaccount.com
+    ```
 
 ### Create an External Cloud SQL
 
@@ -80,9 +80,9 @@ SYNTASA uses an external Cloud SQL to save metadata and state information, pleas
 11. Click 'Close'
 12. Click the 'Create' button at the bottom.
 13. Once your Metastore has finished creating (this might take anywhere from 2-10 minutes), please note down the 'Instance Connection Name' which should look like the following:
-```
+    ```
     <my_project>:<my_region>:syntasa-metastore-pg
-```
+    ```
 14. Click on the created instance, go to Databases, create new database and name it as 'syntasa'.
 
 ### Reserve a Static External IP
@@ -94,15 +94,15 @@ Although a Static IP is not required, it is highly preferred to use a static ip.
 3. Click the 'Reserve Static Address' button on the top toolbar menu
 4. On the 'Reserve Static address' screen, please fill in the following fields
 
-| Field Name      | Values |
-| --------- :| -----|
-| Name  | Name for the entry, e.g. 'syntasa-application-static-ip |
-| Description |  Short description e.g. 'Reservation for Syntasa Application' |
-| Network Service Tier | Select Premium |
-| IP Version | Select IPv4 |
-| Type | Select Regional |
-| Region | Select a region that is in line with the metastore region you selected above |
-| Attached To | Leave as default 'None' |
+| Field Name           | Values                                                                       |
+|----------------------|------------------------------------------------------------------------------|
+| Name                 | Name for the entry, e.g. 'syntasa-application-static-ip                      |
+| Description          | Short description e.g. 'Reservation for Syntasa Application'                 |
+| Network Service Tier | Select Premium                                                               |
+| IP Version           | Select IPv4                                                                  |
+| Type                 | Select Regional                                                              |
+| Region               | Select a region that is in line with the metastore region you selected above |
+| Attached To          | Leave as default 'None'                                                      |
 
  Once all fields are filled in, please click the 'Reserve' button and take note of the Name you provided for the Static IP Name.
 
