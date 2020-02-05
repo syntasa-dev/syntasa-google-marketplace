@@ -85,9 +85,9 @@ SYNTASA uses an external Cloud SQL to save metadata and state information, pleas
 11. Click 'Close'
 12. Click the 'Create' button at the bottom.
 13. Once your Metastore has finished creating (this might take anywhere from 2-10 minutes), please note down the 'Instance Connection Name' which should look like the following:
-    ```
-    <my_project>:<my_region>:syntasa-metastore-pg
-    ```
+  
+    `<my_project>:<my_region>:syntasa-metastore-pg`
+    
 14. Click on the created instance, go to Databases, create new database and name it as 'syntasa'.
 
 ---
