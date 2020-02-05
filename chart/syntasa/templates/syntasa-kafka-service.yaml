@@ -12,7 +12,7 @@ spec:
     - port: 31093
       name: internal
       nodePort: 31093
-    - port: 9092
+    - port: 31094
       name: internal-1
       nodePort: 31094
   selector:
