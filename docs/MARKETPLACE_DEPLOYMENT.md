@@ -63,13 +63,12 @@ SYNTASA uses an external Cloud SQL to save metadata and state information, pleas
 3. On the next screen, pick a Database Type, please pick 'Choose PostgreSQL'
 4. Fill in the following fields
 
-> Instance ID - Please choose a name for the Instance e.g. 'syntasa-metadata-db'
-
-> Default User Password - Please pick a password that is sufficiently complex e.g. 'mySup3erP@$$'
-
-> Location - Please pick a Region and Zone for your instance to be hosted in.  Please note that it is very important to pick a region and zone that will be the same region as the Kubernetes cluster you will create later.
-
-> Database Version - Please pick PostgreSQL 9.6
+| Field Name            | Field Value                                                                                                                                                                                                   |
+|-----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Instance Id           | A name for the Instance e.g. 'syntasa-metadata-db'                                                                                                                                                            |
+| Default User Password | Pick a password that is sufficiently complex e.g. 'mySup3rP@$$'                                                                                                                                               |
+| Location              | Pick a Region and Zone for your instance to be hosted in.<br/>  Please note that it is very important to pick a region and zone that will be the same region as the Kubernetes cluster you will create later. |
+| Database Version      | Please pick PostgreSQL 9.6                                                                                                                                                                                    |
 
 5. Once filled out, please click the 'show configuration options' link on the bottom of the page
 6. After the new sub-menu opens up, click the 'Flags' section to open that section up.
