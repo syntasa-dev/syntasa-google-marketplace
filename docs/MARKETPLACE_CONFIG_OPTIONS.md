@@ -87,3 +87,5 @@ gathered by:
 > 2. Locate the 'syntasa-ingress' load balancer 
 > 3. Copy the IP address and navigate to it in a new browser tab.
 > 4. You ip will be in the format https://<some_ephemeral_ip>
+
+For any further questions or help, please contact `info@syntasa.com` or `help@syntasa.com`
