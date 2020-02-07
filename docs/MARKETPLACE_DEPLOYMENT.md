@@ -131,8 +131,11 @@ In order to deploy the SYNTASA application from the Google Cloud Marketplace, we
 10. Under Security -- Service Account, please select the service account we created above in the service accounts section.
 11. Under 'Management' please uncheck the 'Enable auto-upgrade' option.
 12. Click 'Save'
-13. Click 'Create'
-14. Cluster creation will take somewhere between 5-10 minutes.
+13. Click on the blue test "Availability, networking, security, and additional features"
+14. Scroll down to the "Security" section.
+15. Check the box for "Issue client certificate".
+16. Click 'Create'
+17. Cluster creation will take somewhere between 5-10 minutes.
 
 ---
 
