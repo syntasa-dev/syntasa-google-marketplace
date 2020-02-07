@@ -113,7 +113,7 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_postgres_url
+                key: syntasa_runtime_service_container_image
           - name: RUNTIME_SERVICE_CONTAINER_NAMESPACE
             valueFrom:
               fieldRef:

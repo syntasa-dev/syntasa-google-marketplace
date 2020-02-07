@@ -98,13 +98,13 @@ properties:
             rulesType: CUSTOM
             rules:
             - apiGroups: [""]
-              resources: ["secrets", "configmaps", "services", "endpoints", "nodes", "pods", "persistentvolumes", "deployments"]
+              resources: ["secrets", "configmaps", "services", "endpoints", "nodes", "pods", "persistentvolumes"]
               verbs: ["*"]
             - apiGroups: [""]
               resources: ["events"]
               verbs: ["*"]
-            - apiGroups: ["extensions"]
-              resources: ["ingresses", "ingresses/status"]
+            - apiGroups: ["extensions", "apps"]
+              resources: ["ingresses", "ingresses/status", "deployments"]
               verbs: ["*"]
 
   syn_kube_storage_class:
@@ -135,7 +135,7 @@ properties:
 
   containerImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-generic-processor:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-generic-processor:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -147,7 +147,7 @@ properties:
 
   kafkaImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/kafka:5.0.2
+    default: gcr.io/syntasa-public/syntasa/kafka:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -159,7 +159,7 @@ properties:
 
   zookeeperImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/zookeeper:5.0.2
+    default: gcr.io/syntasa-public/syntasa/zookeeper:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -171,7 +171,7 @@ properties:
 
   ingressImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/haproxy-ingress:5.0.2
+    default: gcr.io/syntasa-public/syntasa/haproxy-ingress:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -183,7 +183,7 @@ properties:
 
   defaultBackendImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/defaultbackend:5.0.2
+    default: gcr.io/syntasa-public/syntasa/defaultbackend:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -195,7 +195,7 @@ properties:
 
   sqlProxyImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/cloudsql-proxy:5.0.2
+    default: gcr.io/syntasa-public/syntasa/cloudsql-proxy:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -207,7 +207,7 @@ properties:
 
   syntasaInfrastructureServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-infrastructure-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-infrastructure-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -219,7 +219,7 @@ properties:
 
   syntasaApiServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-api-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-api-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -231,7 +231,7 @@ properties:
 
   syntasaAuthServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-auth-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-auth-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -243,7 +243,7 @@ properties:
 
   syntasaComposerServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-composer-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-composer-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -255,7 +255,7 @@ properties:
 
   syntasaMlflowServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-mlflow:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-mlflow:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -267,7 +267,7 @@ properties:
 
   syntasaDataGatewayServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-data-gateway-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-data-gateway-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -279,7 +279,7 @@ properties:
 
   syntasaEventEngineServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-event-engine-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-event-engine-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -291,7 +291,7 @@ properties:
 
   syntasaExecutionServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-execution-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-execution-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -303,7 +303,7 @@ properties:
 
   syntasaJobManagementServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-job-management-service-v2:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-job-management-service-v2:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -315,7 +315,7 @@ properties:
 
   syntasaNotificationServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-notification-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-notification-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -327,7 +327,7 @@ properties:
 
   syntasaRuntimeServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-runtime-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-runtime-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -339,7 +339,7 @@ properties:
 
   syntasaAlertServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-alert-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-alert-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -351,7 +351,7 @@ properties:
 
   syntasaStateServiceImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-state-service:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-state-service:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -363,7 +363,7 @@ properties:
 
   syntasaAppPreviewImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-app-preview:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-app-preview:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -375,7 +375,7 @@ properties:
 
   syntasaAppPlatformImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-app-platform:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-app-platform:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -387,7 +387,7 @@ properties:
 
   syntasaAppBusinessImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-app-business:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-app-business:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -399,7 +399,7 @@ properties:
 
   syntasaAppAppdatagatewayImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-app-appdatagateway:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-app-appdatagateway:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
@@ -411,7 +411,7 @@ properties:
 
   syntasaAppApigatewayImage:
     type: string
-    default: gcr.io/syntasa-devops-sandbox/syntasa/syntasa-app-apigateway:5.0.2
+    default: gcr.io/syntasa-public/syntasa/syntasa-app-apigateway:5.0.2
     x-google-marketplace:
       type: IMAGE
       image:
