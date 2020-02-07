@@ -75,13 +75,13 @@ The default size of 20Gi is usually sufficient.
 
 ## Accessing the SYNTASA Application UI
 
-Once you hit the "Deploy button" in the Google Marketplace SYNTASA Application, please allow up to 1 minute for all services
+Once you hit the "Deploy button" in the Google Marketplace SYNTASA Application, please allow a few minutes for all services
 to be deployed and ready.  To access the SYNTASA Application UI, please follow the below guidance:
 
 1. If you specified a static ip in the 'IP Address of Reserved External IP' field, then your application URL link will be as follows:
 > https://<your_static_ip>
 
-2. If you allowed the default value of '-' to remain, then the SYNTASA application will choose an ephemeral IP to use and your URL link will need to be 
+2. If you allowed the default empty value to remain, then the SYNTASA application will choose an ephemeral IP to use and your URL link will need to be 
 gathered by:
 > 1. Navigate to the Services & Ingresses page
 > 2. Locate the 'syntasa-ingress' load balancer 
