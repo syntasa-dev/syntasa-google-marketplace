@@ -109,6 +109,15 @@ spec:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_runtime_service_container_environment
+          - name: RUNTIME_SERVICE_CONTAINER_IMAGE
+            valueFrom:
+              configMapKeyRef:
+                name: {{ .Values.global.configMap.name }}
+                key: syntasa_postgres_url
+          - name: RUNTIME_SERVICE_CONTAINER_NAMESPACE
+            valueFrom:
+              fieldRef:
+                fieldPath: metadata.namespace
         volumeMounts:
         - name: key-volume
           readOnly: true
