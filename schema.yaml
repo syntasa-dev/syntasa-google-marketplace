@@ -103,8 +103,8 @@ properties:
             - apiGroups: [""]
               resources: ["events"]
               verbs: ["*"]
-            - apiGroups: ["extensions"]
-              resources: ["ingresses", "ingresses/status"]
+            - apiGroups: ["extensions", "apps"]
+              resources: ["ingresses", "ingresses/status", "deployments"]
               verbs: ["*"]
 
   syn_kube_storage_class:
@@ -132,6 +132,18 @@ properties:
         generatedProperties:
           base64EncodedPrivateKey: TLS_CERTIFICATE_KEY
           base64EncodedCertificate: TLS_CERTIFICATE_CRT
+
+  containerImage:
+    type: string
+    default: gcr.io/syntasa-public/syntasa/syntasa-generic-processor:5.0.2
+    x-google-marketplace:
+      type: IMAGE
+      image:
+        generatedProperties:
+          splitToRegistryRepoTag:
+            registry: global.image.repository
+            repo: container_metadata.kafka.image_name
+            tag: global.image.tag
 
   kafkaImage:
     type: string
