@@ -1,15 +1,15 @@
 ## SYNTASA Google Cloud Marketplace Configuration Options
 
-When configuring the SYNTASA app, you will need to enter the below fields.  Please see the descriptions for the what each
+When configuring the SYNTASA Platform, you will need to enter the below fields.  Please see the descriptions for what each
 field is and why it is required.
 
-*Before beginning, Please make sure that your Google Cloud Platform IAM user has the necessary Kubernetes Engine Admin Permissions.  This is required
+*Before beginning, please make sure that your Google Cloud Platform IAM user has the necessary Kubernetes Engine Admin Permissions.  This is required
 to create Kubernetes Service resources.*
 
 **Namespace**
 
 >Namespace is by default set to the default namespace.  If required, please choose a namespace of your liking, most common
-entries for this field is somthing like 'syntasa'
+entries for this field is something like 'syntasa'
 
 **App Instance Name**
 
@@ -33,7 +33,7 @@ more information about how to setup a external IP, please see the documentation 
 
 **Source IP Address Filter**
 
-> This field denotes what ip addresses the SYNTASA Application UI will be open to.  The default value is 0.0.0.0/0 which means
+> This field denotes what IP addresses the SYNTASA Application UI will be open to.  The default value is 0.0.0.0/0 which means
 it will be open to the entire world.  This is not recommended.  Please find the IP address to either your office or wherever
 you wish to access the application from to limit exposure.  This field takes CIDR Notation IP Address values in a comma separated
 list, e.g. 10.10.0.1/32,10.10.1.1/32.
@@ -78,7 +78,7 @@ The default size of 20Gi is usually sufficient.
 Once you hit the "Deploy button" in the Google Marketplace SYNTASA Application, please allow a few minutes for all services
 to be deployed and ready.  To access the SYNTASA Application UI, please follow the below guidance:
 
-1. If you specified a static ip in the 'IP Address of Reserved External IP' field, then your application URL link will be as follows:
+1. If you specified a static IP in the 'IP Address of Reserved External IP' field, then your application URL link will be as follows:
 > https://<your_static_ip>
 
 2. If you allowed the default empty value to remain, then the SYNTASA application will choose an ephemeral IP to use and your URL link will need to be 
@@ -86,6 +86,6 @@ gathered by:
 > 1. Navigate to the Services & Ingresses page
 > 2. Locate the 'syntasa-ingress' load balancer 
 > 3. Copy the IP address and navigate to it in a new browser tab.
-> 4. You ip will be in the format https://<some_ephemeral_ip>
+> 4. Your IP will be in the format https://<some_ephemeral_ip>
 
 For any further questions or help, please contact `info@syntasa.com` or `help@syntasa.com`
