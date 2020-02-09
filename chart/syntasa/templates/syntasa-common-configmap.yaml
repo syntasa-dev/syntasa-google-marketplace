@@ -129,6 +129,7 @@ data:
   syntasa_runtime_service_kafka_max_interval: "20000"
   syntasa_runtime_service_kafka_poll_interval: "100"
   syntasa_runtime_service_container_environment: "KUBERNETES"
+  syntasa_runtime_service_container_image: "{{ .Values.containerImage }}"
 
   syntasa_state_service_consumer_id: "status-service-consumer"
   syntasa_state_service_metrics_url: ""
