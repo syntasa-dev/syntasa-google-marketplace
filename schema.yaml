@@ -98,7 +98,7 @@ properties:
             rulesType: CUSTOM
             rules:
             - apiGroups: [""]
-              resources: ["secrets", "configmaps", "services", "endpoints", "nodes", "pods", "persistentvolumes"]
+              resources: ["secrets", "configmaps", "services", "endpoints", "nodes", "pods", "persistentvolumes", "pods/log"]
               verbs: ["*"]
             - apiGroups: [""]
               resources: ["events"]
