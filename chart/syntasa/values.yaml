@@ -31,7 +31,7 @@ global:
     name: "Syntasa"
   image:
     repository: gcr.io/syntasa-public/syntasa
-    tag: 5.0.2
+    tag: 5.1.0
     pullPolicy: IfNotPresent
   replicaCount: 1
   imagePullSecret:
@@ -127,10 +127,10 @@ container_metadata:
     service_name: "syntasa-execution-service"
     container_port: "8090"
 
-  syntasa_job_management_service:
-    name: "syntasa-job-management-service"
-    image_name: "syntasa-job-management-service-v2"
-    service_name: "syntasa-job-management-service"
+  syntasa_job_scheduler_service:
+    name: "syntasa-job-scheduler-service"
+    image_name: "syntasa-job-scheduler-service-v2"
+    service_name: "syntasa-job-scheduler-service"
     container_port: "8090"
 
   syntasa_notification_service:
@@ -181,3 +181,9 @@ container_metadata:
     image_name: "syntasa-app-apigateway"
     service_name: "syntasa-app-apigateway"
     container_port: "8888"
+
+  syntasa_app_configuration:
+    name: "syntasa-app-configuration-service"
+    image_name: "syntasa-app-configuration-service"
+    service_name: "syntasa-app-configuration-service"
+    container_port: "8889"
