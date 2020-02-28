@@ -1,0 +1,187 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.container_metadata.syntasa_app_configuration.name }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Values.container_metadata.syntasa_app_configuration.name }}
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.container_metadata.syntasa_app_configuration.name }}
+    spec:
+      volumes:
+        - name: key-volume
+          secret:
+            secretName: syntasa-key
+      containers:
+        - image: "{{ .Values.syntasaAppConfigurationImage }}"
+          name: syntasa-app-configuration-service
+          imagePullPolicy: Always
+          env:
+            - name: SYNTASA_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_protocol
+            - name: SYNTASA_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_host
+            - name: VERSION
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_version
+            - name: LOCALHOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_localhost
+            - name: CONFIGURATION_SERVICE_HTTP_ENABLED
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_http_enable
+            - name: CONFIGURATION_SERVICE_HTTP_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_http_port
+            - name: PG_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_postgres_host
+            - name: PG_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_postgres_port
+            - name: PG_USER
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_postgres_username
+            - name: PG_SECRET
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_postgres_password
+            - name: KAFKA_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_kafka_service_host
+            - name: KAFKA_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_kafka_service_port
+            - name: INFRA_METADATA_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_infra_metadata_protocol
+            - name: INFRA_METADATA_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_infra_metadata_hostname
+            - name: INFRA_METADATA_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_infra_metadata_port
+            - name: TOKEN_TIMEOUT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_configuration_service_infra_metadata_port
+            - name: AUTH_SERVICE_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_auth_service_protocol
+            - name: AUTH_SERVICE_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_auth_service_host
+            - name: AUTH_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_auth_service_port
+            - name: STATE_SERVICE_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_state_service_protocol
+            - name: STATE_SERVICE_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_state_service_host
+            - name: STATE_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_state_service_port
+            - name: RUNTIME_SERVICE_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_runtime_service_protocol
+            - name: RUNTIME_SERVICE_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_runtime_service_host
+            - name: RUNTIME_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_runtime_service_port
+            - name: JOB_MANAGEMENT_SERVICE_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_job_management_service_protocol
+            - name: JOB_MANAGEMENT_SERVICE_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_job_management_service_host
+            - name: JOB_MANAGEMENT_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_job_management_service_port
+            - name: EXECUTION_SERVICE_PROTOCOL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_execution_service_protocol
+            - name: EXECUTION_SERVICE_HOSTNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_execution_service_host
+            - name: EXECUTION_SERVICE_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_app_execution_service_port
+
+          volumeMounts:
+            - name: key-volume
+              readOnly: true
+              mountPath: "/syn-app/server/services/configuration-service/syntasa"
+      imagePullSecrets:
+        - name: syn-creds

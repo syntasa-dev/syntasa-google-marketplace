@@ -1,44 +1,44 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.container_metadata.syntasa_job_management_service.name }}
+  name: {{ .Values.container_metadata.syntasa_job_scheduler_service.name }}
   namespace: {{ .Release.Namespace }}
 spec:
   selector:
     matchLabels:
-      app: {{ .Values.container_metadata.syntasa_job_management_service.name }}
+      app: {{ .Values.container_metadata.syntasa_job_scheduler_service.name }}
   strategy:
     type: Recreate
   template:
     metadata:
       labels:
-        app: {{ .Values.container_metadata.syntasa_job_management_service.name }}
+        app: {{ .Values.container_metadata.syntasa_job_scheduler_service.name }}
     spec:
       containers:
-      - image: "{{ .Values.syntasaJobManagementServiceImage }}"
-        name: {{ .Values.container_metadata.syntasa_job_management_service.name }}
+      - image: "{{ .Values.syntasaJobSchedulerServiceImage }}"
+        name: {{ .Values.container_metadata.syntasa_job_scheduler_service.name }}
         imagePullPolicy: Always
         env:
           - name: JOB_MANAGEMENT_EXECUTION_SERVICE_ENDPOINT
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_job_management_execution_service_endpoint
+                key: syntasa_job_scheduler_execution_service_endpoint
           - name: JOB_MANAGEMENT_SERVICE_GROUP_ID_V2
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_job_management_service_group_id_v2
+                key: syntasa_job_scheduler_service_group_id_v2
           - name: JOB_MANAGEMENT_SERVICE_EMAIL_MESSAGE
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_job_management_service_notification_enable
+                key: syntasa_job_scheduler_service_notification_enable
           - name: NOTIFICATION_ENABLE
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_job_management_service_notification_enable
+                key: syntasa_job_scheduler_service_notification_enable
           - name: JOB_MANAGEMENT_SERVICE_KAFKA_BROKER_V2
             valueFrom:
               configMapKeyRef:
@@ -53,7 +53,7 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_job_management_service_external_hostname
+                key: syntasa_job_scheduler_service_external_hostname
           - name: JOB_MANAGEMENT_DATABASE_URL_V2
             valueFrom:
               configMapKeyRef:
@@ -70,7 +70,7 @@ spec:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_postgres_password
         ports:
-        - containerPort: {{ .Values.container_metadata.syntasa_job_management_service.container_port | int }}
+        - containerPort: {{ .Values.container_metadata.syntasa_job_scheduler_service.container_port | int }}
           name: job-svc-port
       imagePullSecrets:
       - name: {{.Values.global.imagePullSecret.name }}

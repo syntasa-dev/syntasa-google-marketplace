@@ -124,6 +124,11 @@ spec:
                 name: {{ .Values.global.configMap.name }}
                 key: syntasa_execution_service_app_database_url
 
+          - name: EXECUTION_API_SERVICE_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ .Values.global.configMap.name }}
+                  key: syntasa_execution_service_url
         ports:
         - containerPort: {{ .Values.container_metadata.syntasa_execution_service.container_port | int }}
           name: exec-svc-port

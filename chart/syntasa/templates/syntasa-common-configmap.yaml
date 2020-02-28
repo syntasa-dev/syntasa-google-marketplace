@@ -113,6 +113,7 @@ data:
   syntasa_execution_service_external_hostname: "{{ .Values.static_ip_address }}"
   syntasa_execution_service_auth_client_url: "http://{{ .Values.container_metadata.syntasa_auth_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.container_metadata.syntasa_auth_service.container_port }}/services/auth-service"
   syntasa_execution_service_app_database_url: "jdbc:postgresql://{{ .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:5432/sma_business"
+  syntasa_execution_service_url: "http://syntasa-backend-api-service.syntasa.svc.cluster.local:9090"
 
   syntasa_job_management_execution_service_endpoint: "http://{{ .Values.container_metadata.syntasa_execution_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.container_metadata.syntasa_execution_service.container_port }}/services/execution-service/v1/jobs/startexecution/"
   syntasa_job_management_service_group_id_v2: "job-management-consumer-v2"
@@ -168,12 +169,14 @@ data:
   syntasa_app_orchestrator_enable: "true"
   syntasa_app_token_timeout: "31090"
 
-
-
-
-
-
-#  {{- range $key, $value := .Values.config_map_values }}
-#  {{ $key }} : {{ tpl ($value | quote) $ }}
-#  {{- end }}
+  syntasa_app_configuration_service_protocol: "http"
+  syntasa_app_configuration_service_host: "{{ .Values.static_ip_address }}"
+  syntasa_app_configuration_service_version: "{{ .Values.global.image.version }}"
+  syntasa_app_configuration_service_localhost: "localhost"
+  syntasa_app_configuration_service_http_enable: "true"
+  syntasa_app_configuration_service_http_port: "8889"
+  syntasa_app_configuration_service_infra_metadata_protocol: "http"
+  syntasa_app_configuration_service_infra_metadata_hostname: "syntasa-backend-api-service.syntasa.svc.cluster.local"
+  syntasa_app_configuration_service_infra_metadata_port: "9090"
+  syntasa_app_configuration_service_infra_metadata_token_timeout: "31090"
 
