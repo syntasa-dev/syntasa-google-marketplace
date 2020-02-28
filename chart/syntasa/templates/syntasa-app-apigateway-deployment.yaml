@@ -149,17 +149,17 @@ spec:
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_app_job_management_service_protocol
+                key: syntasa_app_job_scheduler_service_protocol
           - name: JOB_MANAGEMENT_SERVICE_HOSTNAME
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_app_job_management_service_host
+                key: syntasa_app_job_scheduler_service_host
           - name: JOB_MANAGEMENT_SERVICE_PORT
             valueFrom:
               configMapKeyRef:
                 name: {{ .Values.global.configMap.name }}
-                key: syntasa_app_job_management_service_port
+                key: syntasa_app_job_scheduler_service_port
           - name: EXECUTION_SERVICE_PROTOCOL
             valueFrom:
               configMapKeyRef:

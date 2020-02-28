@@ -128,9 +128,9 @@ container_metadata:
     container_port: "8090"
 
   syntasa_job_scheduler_service:
-    name: "syntasa-job-management-service"
-    image_name: "syntasa-job-management-service-v2"
-    service_name: "syntasa-job-management-service"
+    name: "syntasa-job-scheduler-service"
+    image_name: "syntasa-job-scheduler-service-v2"
+    service_name: "syntasa-job-scheduler-service"
     container_port: "8090"
 
   syntasa_notification_service:

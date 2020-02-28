@@ -115,10 +115,10 @@ data:
   syntasa_execution_service_app_database_url: "jdbc:postgresql://{{ .Values.container_metadata.sql_proxy.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:5432/sma_business"
   syntasa_execution_service_url: "http://syntasa-backend-api-service.syntasa.svc.cluster.local:9090"
 
-  syntasa_job_management_execution_service_endpoint: "http://{{ .Values.container_metadata.syntasa_execution_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.container_metadata.syntasa_execution_service.container_port }}/services/execution-service/v1/jobs/startexecution/"
-  syntasa_job_management_service_group_id_v2: "job-management-consumer-v2"
-  syntasa_job_management_service_notification_enable: 'false'
-  syntasa_job_management_service_external_hostname: "{{ .Values.static_ip_address }}"
+  syntasa_job_scheduler_execution_service_endpoint: "http://{{ .Values.container_metadata.syntasa_execution_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local:{{ .Values.container_metadata.syntasa_execution_service.container_port }}/services/execution-service/v1/jobs/startexecution/"
+  syntasa_job_scheduler_service_group_id_v2: "job-management-consumer-v2"
+  syntasa_job_scheduler_service_notification_enable: 'false'
+  syntasa_job_scheduler_service_external_hostname: "{{ .Values.static_ip_address }}"
 
   syntasa_runtime_service_encryption_enable: "true"
   syntasa_runtime_service_config_location: "/opt/syntasa/lib/config"
@@ -155,9 +155,9 @@ data:
   syntasa_app_runtime_service_host: "{{ .Values.container_metadata.syntasa_runtime_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
   syntasa_app_runtime_service_port: "{{ .Values.container_metadata.syntasa_runtime_service.container_port }}"
 
-  syntasa_app_job_management_service_protocol: "http"
-  syntasa_app_job_management_service_host: "{{ .Values.container_metadata.syntasa_job_management_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
-  syntasa_app_job_management_service_port: "{{ .Values.container_metadata.syntasa_job_management_service.container_port }}"
+  syntasa_app_job_scheduler_service_protocol: "http"
+  syntasa_app_job_scheduler_service_host: "{{ .Values.container_metadata.syntasa_job_scheduler_service.service_name }}.{{ .Release.Namespace }}.svc.cluster.local"
+  syntasa_app_job_scheduler_service_port: "{{ .Values.container_metadata.syntasa_job_scheduler_service.container_port }}"
 
   syntasa_app_protocol: "http"
   syntasa_app_hostname: "{{ .Values.static_ip_address }}"
