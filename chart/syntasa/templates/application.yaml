@@ -11,7 +11,7 @@ metadata:
 spec:
   descriptor:
     type: Syntasa
-    version: '1.0'
+    version: '5.1.0'
     maintainers:
       - name: SYNTASA
         url: https://www.syntasa.com

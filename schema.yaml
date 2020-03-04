@@ -1,7 +1,13 @@
 x-google-marketplace:
   schemaVersion: v2
   applicationApiVersion: v1beta1
-  publishedVersion: '0.1.1'
+  publishedVersion: '5.1.0'
+  publishedVersionMetadata:
+    releaseNote: >-
+      Syntasa platform release 5.1.0
+    releaseTypes:
+      - Feature
+    recommended: true
   partnerId: syntasa-public
   solutionId: syntasa
   managedUpdates:
@@ -12,6 +18,133 @@ x-google-marketplace:
         requests:
           cpu: 2
           memory: 16384Mi
+
+  images:
+    '': {}
+    syntasa-generic-processor:
+      properties:
+        containerImage:
+          type: FULL
+
+    kafka:
+      properties:
+        kafkaImage:
+          type: FULL
+
+    zookeeper:
+      properties:
+        zookeeperImage:
+          type: FULL
+
+    haproxy-ingress:
+      properties:
+        ingressImage:
+          type: FULL
+
+    defaultbackend:
+      properties:
+        defaultBackendImage:
+          type: FULL
+
+    cloudsql-proxy:
+      properties:
+        sqlProxyImage:
+          type: FULL
+
+    syntasa-infrastructure-service:
+      properties:
+        syntasaInfrastructureServiceImage:
+          type: FULL
+
+    syntasa-api-service:
+      properties:
+        syntasaApiServiceImage:
+          type: FULL
+
+    syntasa-auth-service:
+      properties:
+        syntasaAuthServiceImage:
+          type: FULL
+
+    syntasa-composer-service:
+      properties:
+        syntasaComposerServiceImage:
+          type: FULL
+
+    syntasa-mlflow:
+      properties:
+        syntasaMlflowServiceImage:
+          type: FULL
+
+    syntasa-data-gateway-service:
+      properties:
+        syntasaDataGatewayServiceImage:
+          type: FULL
+
+    syntasa-event-engine-service:
+      properties:
+        syntasaEventEngineServiceImage:
+          type: FULL
+
+    syntasa-execution-service:
+      properties:
+        syntasaExecutionServiceImage:
+          type: FULL
+
+    syntasa-job-scheduler-service:
+      properties:
+        syntasaJobSchedulerServiceImage:
+          type: FULL
+
+    syntasa-notification-service:
+      properties:
+        syntasaNotificationServiceImage:
+          type: FULL
+
+    syntasa-runtime-service:
+      properties:
+        syntasaRuntimeServiceImage:
+          type: FULL
+
+    syntasa-alert-service:
+      properties:
+        syntasaAlertServiceImage:
+          type: FULL
+
+    syntasa-state-service:
+      properties:
+        syntasaStateServiceImage:
+          type: FULL
+
+    syntasa-app-preview:
+      properties:
+        syntasaAppPreviewImage:
+          type: FULL
+
+    syntasa-app-configuration-service:
+      properties:
+        syntasaAppConfigurationImage:
+          type: FULL
+
+    syntasa-app-platform:
+      properties:
+        syntasaAppPlatformImage:
+          type: FULL
+
+    syntasa-app-business:
+      properties:
+        syntasaAppBusinessImage:
+          type: FULL
+
+    syntasa-app-appdatagateway:
+      properties:
+        syntasaAppAppdatagatewayImage:
+          type: FULL
+
+    syntasa-app-apigateway:
+      properties:
+        syntasaAppApigatewayImage:
+          type: FULL
 
 form:
   - widget: help
@@ -146,305 +279,6 @@ properties:
           base64EncodedPrivateKey: TLS_CERTIFICATE_KEY
           base64EncodedCertificate: TLS_CERTIFICATE_CRT
 
-  containerImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-generic-processor:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.kafka.image_name
-            tag: global.image.tag
-
-  kafkaImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/kafka:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.kafka.image_name
-            tag: global.image.tag
-
-  zookeeperImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/zookeeper:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.zookeeper.image_name
-            tag: global.image.tag
-
-  ingressImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/haproxy-ingress:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.ingress.image_name
-            tag: global.image.tag
-
-  defaultBackendImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/defaultbackend:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.default_backend.image_name
-            tag: global.image.tag
-
-  sqlProxyImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/cloudsql-proxy:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.sql_proxy.image_name
-            tag: global.image.tag
-
-  syntasaInfrastructureServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-infrastructure-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_infrastructure_service.image_name
-            tag: global.image.tag
-
-  syntasaApiServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-api-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_api_service.image_name
-            tag: global.image.tag
-
-  syntasaAuthServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-auth-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_auth_service.image_name
-            tag: global.image.tag
-
-  syntasaComposerServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-composer-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_composer_service.image_name
-            tag: global.image.tag
-
-  syntasaMlflowServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-mlflow:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_mlflow_service.image_name
-            tag: global.image.tag
-
-  syntasaDataGatewayServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-data-gateway-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_data_gateway_service.image_name
-            tag: global.image.tag
-
-  syntasaEventEngineServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-event-engine-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_event_engine_service.image_name
-            tag: global.image.tag
-
-  syntasaExecutionServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-execution-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_execution_service.image_name
-            tag: global.image.tag
-
-  syntasaJobSchedulerServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-job-scheduler-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_job_management_service.image_name
-            tag: global.image.tag
-
-  syntasaNotificationServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-notification-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_notification_service.image_name
-            tag: global.image.tag
-
-  syntasaRuntimeServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-runtime-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_runtime_service.image_name
-            tag: global.image.tag
-
-  syntasaAlertServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-alert-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_alert_service.image_name
-            tag: global.image.tag
-
-  syntasaStateServiceImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-state-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_state_service.image_name
-            tag: global.image.tag
-
-  syntasaAppPreviewImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-app-preview:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_app_preview.image_name
-            tag: global.image.tag
-
-  syntasaAppConfigurationImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-app-configuration-service:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_app_preview.image_name
-            tag: global.image.tag
-
-  syntasaAppPlatformImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-app-platform:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_app_platform.image_name
-            tag: global.image.tag
-
-  syntasaAppBusinessImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-app-business:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_app_business.image_name
-            tag: global.image.tag
-
-  syntasaAppAppdatagatewayImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-app-appdatagateway:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_app_appdatagateway.image_name
-            tag: global.image.tag
-
-  syntasaAppApigatewayImage:
-    type: string
-    default: gcr.io/syntasa-public/syntasa/syntasa-app-apigateway:5.1.0
-    x-google-marketplace:
-      type: IMAGE
-      image:
-        generatedProperties:
-          splitToRegistryRepoTag:
-            registry: global.image.repository
-            repo: container_metadata.syntasa_app_apigateway.image_name
-            tag: global.image.tag
 required:
   - name
   - namespace
