@@ -1,6 +1,6 @@
 ## SYNTASA Google Cloud Marketplace Configuration Options
 
-When configuring the SYNTASA Platform, you will need to enter the below fields.  Please see the descriptions for what each
+When configuring the SYNTASA App in Google Marketplace, you will need to enter the below fields.  Please see the descriptions for what each
 field is and why it is required.
 
 *Before beginning, please make sure that your Google Cloud Platform IAM user has the necessary Kubernetes Engine Admin Permissions.  This is required
@@ -29,7 +29,7 @@ following document for more information.  [`SYN_LICENSE_INFO.md`](/docs/SYN_LICE
 **IP Address of Reserved External IP**
 
 > If you wish to use your own External IP Address, please provide the IP address here (such as a GKE reserved external static IP), for
-more information about how to setup a external IP, please see the documentation located here: [`Prerequisites - External Static IP Reservation`](https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/PREREQUISITES.md#google-cloud-service-account)
+more information about how to setup a external IP, please see the documentation located here: [`Prerequisites - External Static IP Reservation`](https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/PREREQUISITES.md#external-static-ip-reservation-optional)
 
 **Source IP Address Filter**
 
