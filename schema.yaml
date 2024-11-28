@@ -1,10 +1,10 @@
 x-google-marketplace:
   schemaVersion: v2
   applicationApiVersion: v1beta1
-  publishedVersion: '5.1.0'
+  publishedVersion: '8.1.0'
   publishedVersionMetadata:
     releaseNote: >-
-      Syntasa platform release 5.1.0
+      Syntasa platform release 8.1.0
     releaseTypes:
       - Feature
     recommended: true
@@ -21,148 +21,40 @@ x-google-marketplace:
 
   images:
     '': {}
-    syntasa-generic-processor:
-      properties:
-        containerImage:
-          type: FULL
-
-    kafka:
-      properties:
-        kafkaImage:
-          type: FULL
-
-    zookeeper:
-      properties:
-        zookeeperImage:
-          type: FULL
-
     haproxy-ingress:
       properties:
         ingressImage:
           type: FULL
 
-    defaultbackend:
+    syntasa-management-auth:
       properties:
-        defaultBackendImage:
+        syntasaManagementAuthImage:
           type: FULL
 
-    cloudsql-proxy:
+    syntasa-installer-agent:
       properties:
-        sqlProxyImage:
+        syntasaInstallerAgentImage:
+          type: FULL
+    
+    syntasa-management:
+      properties:
+        syntasaManagementImage:
           type: FULL
 
-    syntasa-infrastructure-service:
+    syntasa-management-console:
       properties:
-        syntasaInfrastructureServiceImage:
+        syntasaManagementConsoleImage:
           type: FULL
-
-    syntasa-api-service:
-      properties:
-        syntasaApiServiceImage:
-          type: FULL
-
-    syntasa-auth-service:
-      properties:
-        syntasaAuthServiceImage:
-          type: FULL
-
-    syntasa-composer-service:
-      properties:
-        syntasaComposerServiceImage:
-          type: FULL
-
-    syntasa-mlflow:
-      properties:
-        syntasaMlflowServiceImage:
-          type: FULL
-
-    syntasa-data-gateway-service:
-      properties:
-        syntasaDataGatewayServiceImage:
-          type: FULL
-
-    syntasa-event-engine-service:
-      properties:
-        syntasaEventEngineServiceImage:
-          type: FULL
-
-    syntasa-execution-service:
-      properties:
-        syntasaExecutionServiceImage:
-          type: FULL
-
-    syntasa-job-scheduler-service:
-      properties:
-        syntasaJobSchedulerServiceImage:
-          type: FULL
-
-    syntasa-notification-service:
-      properties:
-        syntasaNotificationServiceImage:
-          type: FULL
-
-    syntasa-runtime-service:
-      properties:
-        syntasaRuntimeServiceImage:
-          type: FULL
-
-    syntasa-alert-service:
-      properties:
-        syntasaAlertServiceImage:
-          type: FULL
-
-    syntasa-state-service:
-      properties:
-        syntasaStateServiceImage:
-          type: FULL
-
-    syntasa-app-preview:
-      properties:
-        syntasaAppPreviewImage:
-          type: FULL
-
-    syntasa-app-configuration-service:
-      properties:
-        syntasaAppConfigurationImage:
-          type: FULL
-
-    syntasa-app-platform:
-      properties:
-        syntasaAppPlatformImage:
-          type: FULL
-
-    syntasa-app-business:
-      properties:
-        syntasaAppBusinessImage:
-          type: FULL
-
-    syntasa-app-appdatagateway:
-      properties:
-        syntasaAppAppdatagatewayImage:
-          type: FULL
-
-    syntasa-app-apigateway:
-      properties:
-        syntasaAppApigatewayImage:
-          type: FULL
-
+    
 form:
   - widget: help
     description: |-
       <h2>Thank you for your interest in SYNTASA</h2>
-
       <p>Before deploying the SYNTASA application from Google Marketplace, you must request a <a href="https://syntasa.com/form/gcp-marketplace-license-request">Syntasa license key</a> for a free trial.</p>
       <p><b>**This must be done prior to installing SYNTASA in the GCP Marketplace**</b></p>
       <p>Once requested, SYNTASA representatives will respond with a license key that you can use to deploy along with more detailed instructions</p>
-
       <p>For more information about the SYNTASA Google Marketplace Configuration Parameters on the left, please visit the following guide:</p>
-
       <a href="https://github.com/syntasa-dev/syntasa-google-marketplace/blob/master/docs/MARKETPLACE_CONFIG_OPTIONS.md#syntasa-google-cloud-marketplace-configuration-options">Syntasa Marketplace Installation and Configuration Documentation</a>
-
-      <p>For more information about the SYNTASA solution please visiting the following github repo:</p>
-
-      <a href="https://github.com/syntasa-dev/syntasa-google-marketplace#syntasa-customer-intelligence-platform-for-google-marketplace">Syntasa Marketplace Installation and Configuration Documentation</a></p>
-
       <p>For any additional support please visit: <a href="https://help.syntasa.com">help.syntasa.com</a></p>
 
 properties:
@@ -180,14 +72,14 @@ properties:
 
   syn_license:
     type: string
-    title: License key.  Please see documentation (Required)
+    title: License key. Please see documentation (Required)
     default: ""
     x-google-marketplace:
       type: STRING
 
   syn_secret_key:
     type: string
-    title: Secret Key.  Please see documentation (Required)
+    title: Secret Key. Please see documentation (Required)
     default: ""
     x-google-marketplace:
       type: MASKED_FIELD
@@ -202,7 +94,7 @@ properties:
   whitelist_ips:
     type: string
     title: Source IP Address filter
-    description: Comma separated list of IP Addresses to whitelist.
+    description: Comma-separated list of IP Addresses to whitelist.
     default: "0.0.0.0/0"
 
   metastore_connection_name:
@@ -252,12 +144,17 @@ properties:
               - apiGroups: ["extensions", "apps"]
                 resources: ["ingresses", "ingresses/status", "deployments"]
                 verbs: ["*"]
+        description: >
+          The Syntasa Service Account Agent is required for managing Kubernetes resources,
+          including secrets, configmaps, services, and pods. It grants the necessary permissions
+          for the application to operate within the GKE cluster.
 
   syn_kube_storage_class:
     type: string
     title: Storage Class
     default: "pd-standard"
-    description: You can choose an existing storageclass or a newly created Storage Class will be provisioned with "pd-ssd"
+    description: |
+      Choose an existing storage class, or a newly created storage class will be provisioned with "pd-ssd."
     x-google-marketplace:
       type: STORAGE_CLASS
       storageClass:
@@ -266,7 +163,7 @@ properties:
   syn_kube_storage_class_size:
     type: string
     title: Storage size for persistent volumes
-    description: Storage Volume size for frontend/backend/platform services
+    description: Storage volume size for frontend, backend, and platform services.
     default: "20Gi"
     pattern: '^[1-9][0-9]*(\.[0-9]+)?[TGM]i?$'
 
